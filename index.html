@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GEO/AEO-агентство — инженерим присутствие бренда в ответах ИИ</title>
 <meta name="description" content="Повышаем вероятность включения вашего бренда в ответы генеративных нейросетей. Моделирование видимости, GEO-рефакторинг сайта, усиление присутствия, мониторинг доли упоминаний.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -25,11 +28,21 @@
 
 <!-- ===================== ЭКРАН 1: HERO + СИМУЛЯТОР ===================== -->
 <section class="hero" id="hero">
+  <div class="hero-glow"></div>
   <div class="container hero-grid">
     <div class="hero-text">
+      <span class="hero-badge">⚡ GEO / AEO для эпохи генеративного поиска</span>
       <h1>Станьте тем брендом, которого ИИ называет первым.</h1>
       <p class="hero-sub">Инженерим присутствие вашего бренда в ответах ИИ-ассистентов и отслеживаем его в динамике. Растим вашу долю упоминаний (LLM Share of Voice) в поисковых нейросетях.</p>
-      <a href="#checker" class="btn btn-primary btn-lg">Смоделировать видимость моего бренда в ИИ</a>
+      <div class="hero-actions">
+        <a href="#checker" class="btn btn-primary btn-lg">Смоделировать видимость моего бренда в ИИ</a>
+        <a href="#cycle" class="btn btn-ghost btn-lg">Как это работает</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-num">4</span><span class="hero-stat-label">модели в мониторинге</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">+38%</span><span class="hero-stat-label">средний рост Share of Voice</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">24/7</span><span class="hero-stat-label">наблюдение за выдачей</span></div>
+      </div>
     </div>
 
     <div class="hero-sim">
@@ -206,18 +219,21 @@
     <h2>Как это работает</h2>
     <div class="layers-grid">
       <div class="layer-card">
+        <span class="layer-icon">📡</span>
         <span class="layer-num">01</span>
         <h3>Слой сигналов</h3>
         <p>То, чем мы реально управляем: контент, структура сайта, разметка, источники, упоминания.</p>
       </div>
       <div class="layer-arrow">→</div>
       <div class="layer-card">
+        <span class="layer-icon">🧠</span>
         <span class="layer-num">02</span>
         <h3>Слой моделей</h3>
         <p>То, что мы не контролируем: разные LLM читают разные источники и ведут себя по-разному, единого поведения нет.</p>
       </div>
       <div class="layer-arrow">→</div>
       <div class="layer-card">
+        <span class="layer-icon">📊</span>
         <span class="layer-num">03</span>
         <h3>Слой вероятности</h3>
         <p>Результат: распределение и частота упоминаний, а не гарантированный факт появления.</p>
