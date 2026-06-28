@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEO/AEO-агентство — инженерим присутствие бренда в ответах ИИ</title>
+<meta name="description" content="Повышаем вероятность включения вашего бренда в ответы генеративных нейросетей. Моделирование видимости, GEO-рефакторинг сайта, усиление присутствия, мониторинг доли упоминаний.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a href="#top" class="logo">GEO<span>·AEO</span></a>
+    <nav class="nav">
+      <a href="#cycle">Как мы работаем</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#layers">Как это устроено</a>
+      <a href="#faq">База знаний</a>
+    </nav>
+    <a href="#checker" class="btn btn-primary nav-cta">Смоделировать видимость</a>
+  </div>
+</header>
+
+<!-- ===================== ЭКРАН 1: HERO + СИМУЛЯТОР ===================== -->
+<section class="hero" id="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <h1>Станьте тем брендом, которого ИИ называет первым.</h1>
+      <p class="hero-sub">Инженерим присутствие вашего бренда в ответах ИИ-ассистентов и отслеживаем его в динамике. Растим вашу долю упоминаний (LLM Share of Voice) в поисковых нейросетях.</p>
+      <a href="#checker" class="btn btn-primary btn-lg">Смоделировать видимость моего бренда в ИИ</a>
+    </div>
+
+    <div class="hero-sim">
+      <div class="sim-window">
+        <div class="sim-window-bar">
+          <span class="sim-dot"></span><span class="sim-dot"></span><span class="sim-dot"></span>
+          <span class="sim-title">AI-ассистент</span>
+        </div>
+        <div class="sim-body">
+          <div class="sim-controls">
+            <input type="text" id="simNicheInput" placeholder="Введите вашу нишу, например «доставка цветов»">
+            <button id="simRunBtn" class="btn btn-secondary">Запустить демо</button>
+          </div>
+          <div class="sim-chat" id="simChat" aria-live="polite"></div>
+          <p class="sim-disclaimer">Демонстрационный пример. Симуляция ответа ИИ, не является реальной выдачей нейросети.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ЭКРАН 2: БОЛЬ + ЧЕКЕР ===================== -->
+<section class="pain-checker" id="checker">
+  <div class="container">
+    <div class="pain">
+      <h2>Поведение пользователей меняется</h2>
+      <p>Всё больше людей не листают ссылки, а читают готовый ответ нейросети. Если в этом ответе нет вашего бренда — клиент о вас не узнаёт.</p>
+    </div>
+
+    <div class="checker-card">
+      <h3>Бесплатное моделирование видимости</h3>
+      <form id="checkerForm" class="checker-form">
+        <div class="checker-fields">
+          <label>
+            Бренд
+            <input type="text" id="checkerBrand" placeholder="Название бренда" required>
+          </label>
+          <label>
+            Ниша
+            <input type="text" id="checkerNiche" placeholder="Например, «ипотечный брокер»" required>
+          </label>
+          <label>
+            Регион <span class="opt">(опционально)</span>
+            <input type="text" id="checkerRegion" placeholder="Город / страна">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Запустить моделирование</button>
+      </form>
+
+      <p class="checker-disclaimer">Индикативная симуляция типичных ответов моделей на заданные запросы. Нейросети недетерминированы — результат показывает вероятную картину, а не точную метрику.</p>
+
+      <div id="checkerResult" class="checker-result hidden"></div>
+    </div>
+
+    <div class="loss-calc">
+      <h4>Калькулятор упущенной выручки</h4>
+      <div class="loss-fields">
+        <label>
+          Средний чек, ₽
+          <input type="number" id="lossCheck" placeholder="3000" min="0">
+        </label>
+        <label>
+          Трафик в месяц
+          <input type="number" id="lossTraffic" placeholder="5000" min="0">
+        </label>
+        <button id="lossCalcBtn" class="btn btn-secondary">Посчитать</button>
+      </div>
+      <p id="lossResult" class="loss-result hidden"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ЭКРАН 3: ЦИКЛ ===================== -->
+<section class="cycle" id="cycle">
+  <div class="container">
+    <p class="eyebrow">Это не набор услуг. Это система, которая инженерит ваше присутствие в ответах нейросетей и удерживает его в фокусе.</p>
+    <h2>Как мы делаем ваш бренд видимым для ИИ</h2>
+    <p class="cycle-sub">Видимость в ИИ нестабильна — модели обновляются, конкуренты двигаются. Поэтому мы работаем циклом: моделируем картину, строим фундамент сигналов, усиливаем присутствие и постоянно держим под наблюдением.</p>
+
+    <div class="cycle-ring" id="cycleRing">
+      <div class="cycle-stage" data-stage="1">
+        <span class="stage-num">1</span>
+        <h3>Диагностика</h3>
+        <p class="stage-tagline">Как ИИ отвечает о вас сегодня</p>
+        <div class="stage-detail">
+          <p>Моделируем ответы ключевых нейросетей по реальным запросам ниши. Показываем честную картину: входит ли бренд в типичные ответы, что появляется вместо него, кто из конкурентов уже занял место.</p>
+          <p><strong>Результат:</strong> карта видимости и список запросов, где бренд отсутствует.</p>
+          <a href="#checker" class="stage-anchor">Базовое моделирование можно пройти прямо сейчас — бесплатно →</a>
+        </div>
+      </div>
+
+      <div class="cycle-stage" data-stage="2">
+        <span class="stage-num">2</span>
+        <h3>Фундамент</h3>
+        <p class="stage-tagline">Сайт как источник сигналов для нейросетей</p>
+        <div class="stage-detail">
+          <p>Если сайт нечитаем для ботов (JS прячет текст, нет разметки, контент размазан) — он не работает как источник. Пересобираем его под машинное извлечение: чистый семантический HTML, разметка Schema.org / JSON-LD, структура под «разговорные» запросы, высокая плотность фактов, мгновенная отдача контента ботам.</p>
+          <p><strong>Результат:</strong> сайт-источник, который нейросети считывают за миллисекунды и используют как достоверный сигнал.</p>
+          <p class="stage-note">GEO-рефакторинг (существующий сайт) или GEO-Ready сайт (с нуля).</p>
+        </div>
+      </div>
+
+      <div class="cycle-stage" data-stage="3">
+        <span class="stage-num">3</span>
+        <h3>Усиление присутствия</h3>
+        <p class="stage-tagline">Делаем бренд предпочтительным источником для ответа</p>
+        <div class="stage-detail">
+          <ul>
+            <li><strong>GEO для РФ</strong> — Яндекс Нейро, GigaChat: справочники, VC.ru, Habr, товарные фиды, локальный контент.</li>
+            <li><strong>Global GEO</strong> — ChatGPT, Claude, Gemini: вывод IT-продуктов, SaaS, экспортёров (Reddit, Medium, Quora).</li>
+            <li><strong>AI-ORM</strong> — работа с репутацией в ИИ: вытеснение галлюцинаций и устаревшего негатива корректными фактами.</li>
+          </ul>
+          <p><strong>Результат:</strong> рост доли упоминаний (Share of Voice) в ответах нейросетей.</p>
+        </div>
+      </div>
+
+      <div class="cycle-stage" data-stage="4">
+        <span class="stage-num">4</span>
+        <h3>Наблюдение</h3>
+        <p class="stage-tagline">Чтобы вы не выпали из ответа завтра</p>
+        <div class="stage-detail">
+          <p>Видимость в ИИ — не разовый трофей. Подключаем мониторинг: дашборд с динамикой доли упоминаний по неделям в разрезе нейросетей, сигналы «бренд выпал из ответа по запросу X», движение конкурентов.</p>
+          <p class="stage-trigger">Конкуренты не стоят на месте: когда они усиливают свои сигналы, нейросеть может перестать включать вас в ответ. Мониторинг замечает такие сдвиги и сигнализирует о них.</p>
+          <p class="stage-note">AI-Visibility Monitoring — подписка (retainer).</p>
+          <button class="btn btn-secondary stage-dashboard-btn" id="dashboardDemoBtn">Показать демо дашборда</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="dashboardPreview" class="dashboard-preview hidden">
+      <h4>AI-Visibility Monitoring — демо</h4>
+      <div class="dashboard-chart" id="dashboardChart"></div>
+      <p class="dashboard-caption">Динамика доли упоминаний бренда по неделям (демонстрационные данные).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ЭКРАН 4: КЕЙСЫ ===================== -->
+<section class="cases" id="cases">
+  <div class="container">
+    <h2>Доказательства присутствия в ИИ</h2>
+    <div class="cases-grid">
+      <article class="case-card">
+        <div class="case-chat">
+          <p class="case-query">«Посоветуй надёжного застройщика в СПб»</p>
+          <p class="case-answer">«...среди заметных игроков — <mark>Северный Дом</mark>, известный качеством отделки и сроками сдачи...»</p>
+        </div>
+        <div class="case-stat">
+          <span class="case-number">5% → 43%</span>
+          <span class="case-label">Доля упоминаний (Share of Voice) за 2 месяца</span>
+        </div>
+        <p class="case-date">Дата проверки: 14.05.2026 · методика: 120 промптов ниши, 3 модели</p>
+      </article>
+
+      <article class="case-card">
+        <div class="case-chat">
+          <p class="case-query">«Какой сервис подходит для автоматизации бухгалтерии малого бизнеса?»</p>
+          <p class="case-answer">«...решения вроде <mark>УчётПро</mark> предлагают интеграцию с банками и автоматическую сверку...»</p>
+        </div>
+        <div class="case-stat">
+          <span class="case-number">0% → 27%</span>
+          <span class="case-label">Доля упоминаний (Share of Voice) за 3 месяца</span>
+        </div>
+        <p class="case-date">Дата проверки: 02.06.2026 · методика: 90 промптов ниши, 4 модели</p>
+      </article>
+    </div>
+    <p class="cases-note">Скриншоты приведены с согласия клиентов. Демонстрационные примеры всегда отмечены отдельно и не смешиваются с реальными кейсами.</p>
+  </div>
+</section>
+
+<!-- ===================== ЭКРАН 5: ТРЁХСЛОЙНАЯ МОДЕЛЬ ===================== -->
+<section class="layers" id="layers">
+  <div class="container">
+    <h2>Как это работает</h2>
+    <div class="layers-grid">
+      <div class="layer-card">
+        <span class="layer-num">01</span>
+        <h3>Слой сигналов</h3>
+        <p>То, чем мы реально управляем: контент, структура сайта, разметка, источники, упоминания.</p>
+      </div>
+      <div class="layer-arrow">→</div>
+      <div class="layer-card">
+        <span class="layer-num">02</span>
+        <h3>Слой моделей</h3>
+        <p>То, что мы не контролируем: разные LLM читают разные источники и ведут себя по-разному, единого поведения нет.</p>
+      </div>
+      <div class="layer-arrow">→</div>
+      <div class="layer-card">
+        <span class="layer-num">03</span>
+        <h3>Слой вероятности</h3>
+        <p>Результат: распределение и частота упоминаний, а не гарантированный факт появления.</p>
+      </div>
+    </div>
+
+    <div class="translation-block">
+      <p><strong>Перевод нашего языка.</strong> Когда мы говорим «инженерим присутствие» — технически это означает: повышаем вероятность включения бренда в генеративные ответы через работу с сигналами (контент, структура, источники, упоминания). Мы не управляем тем, что отвечает модель; мы меняем условия, при которых она чаще выбирает бренд.</p>
+    </div>
+
+    <div class="stack-proof">
+      <h4>Технологический стек как доказательство работы со слоем сигналов</h4>
+      <ul>
+        <li><strong>Сбор семантики:</strong> кластеризация «разговорных» (промптовых) запросов.</li>
+        <li><strong>Техническая разметка:</strong> Schema.org, JSON-LD — то, что считывают боты.</li>
+        <li><strong>Контент-инженерия:</strong> материалы с высокой плотностью фактов под извлечение LLM.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ЭКРАН 6: БАЗА ЗНАНИЙ / FAQ ===================== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <h2>База знаний по GEO</h2>
+    <div class="faq-list" id="faqList">
+      <details class="faq-item">
+        <summary>Что такое GEO/AEO?</summary>
+        <p>GEO (Generative Engine Optimization) и AEO (Answer Engine Optimization) — это работа с сигналами бренда так, чтобы генеративные нейросети чаще включали его в свои ответы.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Чем это отличается от SEO?</summary>
+        <p>SEO оптимизирует позицию в списке ссылок поисковика. GEO/AEO работает с тем, что модель извлекает и пересказывает в готовом ответе — без списка ссылок и без гарантированной «позиции».</p>
+      </details>
+      <details class="faq-item">
+        <summary>Как попасть в ответы Яндекс Нейро?</summary>
+        <p>Через работу со слоем сигналов: справочники, тематические площадки (VC.ru, Habr), товарные фиды, локальный контент, структурированная разметка сайта.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Можно ли гарантировать попадание?</summary>
+        <p>Нет. Можно влиять на вероятность через сигналы — модели остаются вероятностными системами, которые мы не контролируем (см. трёхслойную модель выше).</p>
+      </details>
+      <details class="faq-item">
+        <summary>Чем AI-ORM отличается от обычного удаления негатива?</summary>
+        <p>Убрать фактическую ошибку из ответа модели — это вероятностная работа с сигналами, а не клик «удалить». Мы вытесняем устаревший или неверный контекст корректными фактами, но не гарантируем мгновенное исчезновение упоминания.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ЭКРАН 7: ПОДВАЛ ===================== -->
+<footer class="site-footer" id="footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="#top" class="logo">GEO<span>·AEO</span></a>
+      <p class="footer-legal">ИНН 0000000000 · ОГРН 0000000000000</p>
+    </div>
+    <div class="footer-links">
+      <a href="#cycle">Как мы работаем</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#layers">Как это устроено</a>
+      <a href="#faq">База знаний</a>
+    </div>
+    <div class="footer-disclaimers">
+      <p>Упоминания зарубежных сервисов приведены в информационных целях.</p>
+      <p>Нажимая «Отправить», вы соглашаетесь с <a href="#">политикой обработки персональных данных</a>.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
