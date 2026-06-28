@@ -5,494 +5,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GEO/AEO-агентство — инженерим присутствие бренда в ответах ИИ</title>
 <meta name="description" content="Повышаем вероятность включения вашего бренда в ответы генеративных нейросетей. Моделирование видимости, GEO-рефакторинг сайта, усиление присутствия, мониторинг доли упоминаний.">
+<link rel="canonical" href="https://example.com/">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="GEO/AEO-агентство — присутствие бренда в ответах ИИ">
+<meta property="og:description" content="Моделируем и усиливаем вероятность упоминания вашего бренда в ответах ChatGPT, Яндекс Нейро, GigaChat и Gemini.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:image" content="/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GEO/AEO-агентство — присутствие бренда в ответах ИИ">
+<meta name="twitter:description" content="Моделируем и усиливаем вероятность упоминания вашего бренда в ответах генеративных нейросетей.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-/* ============ DESIGN TOKENS ============ */
-:root {
-  --bg: #08090d;
-  --bg-soft: #0d0f16;
-  --bg-alt: #11141d;
-  --card: #151926;
-  --card-hover: #1a1f2e;
-  --border: #242b3d;
-  --border-soft: #1b202d;
-  --text: #f1f3f8;
-  --text-dim: #9aa3b8;
-  --text-faint: #6b7385;
-  --accent: #5eead4;
-  --accent-soft: rgba(94, 234, 212, .12);
-  --accent-2: #818cf8;
-  --accent-2-soft: rgba(129, 140, 248, .14);
-  --gradient: linear-gradient(135deg, #5eead4 0%, #818cf8 100%);
-  --danger: #fb7185;
-  --radius-sm: 10px;
-  --radius: 18px;
-  --radius-lg: 26px;
-  --shadow-sm: 0 4px 16px rgba(0,0,0,.25);
-  --shadow-md: 0 12px 36px rgba(0,0,0,.35);
-  --shadow-glow: 0 0 0 1px rgba(94,234,212,.25), 0 18px 50px rgba(94,234,212,.08);
-  --container-w: 1180px;
-  --font-body: "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-display: "Space Grotesk", "Inter", sans-serif;
+<link rel="stylesheet" href="assets/css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GEO·AEO агентство",
+  "url": "https://example.com/",
+  "description": "Агентство по GEO/AEO-оптимизации: повышение вероятности упоминания бренда в ответах генеративных нейросетей."
 }
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GEO·AEO агентство",
+  "url": "https://example.com/"
 }
-
-.container {
-  max-width: var(--container-w);
-  margin: 0 auto;
-  padding: 0 28px;
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "GEO/AEO оптимизация присутствия бренда в генеративных нейросетях",
+  "provider": { "@type": "Organization", "name": "GEO·AEO агентство" },
+  "description": "Диагностика видимости бренда в ИИ, GEO-рефакторинг сайта, усиление присутствия, мониторинг доли упоминаний (Share of Voice)."
 }
-
-h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  line-height: 1.15;
-  margin: 0 0 18px;
-  letter-spacing: -0.01em;
-  color: var(--text);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Что такое GEO/AEO?", "acceptedAnswer": { "@type": "Answer", "text": "GEO (Generative Engine Optimization) и AEO (Answer Engine Optimization) — работа с сигналами бренда так, чтобы генеративные нейросети чаще включали его в свои ответы." } },
+    { "@type": "Question", "name": "Чем это отличается от SEO?", "acceptedAnswer": { "@type": "Answer", "text": "SEO оптимизирует позицию в списке ссылок поисковика. GEO/AEO работает с тем, что модель извлекает и пересказывает в готовом ответе, без списка ссылок и без гарантированной позиции." } },
+    { "@type": "Question", "name": "Как попасть в ответы Яндекс Нейро?", "acceptedAnswer": { "@type": "Answer", "text": "Через работу со слоем сигналов: справочники, тематические площадки, товарные фиды, локальный контент, структурированная разметка сайта." } },
+    { "@type": "Question", "name": "Можно ли гарантировать попадание в ответ?", "acceptedAnswer": { "@type": "Answer", "text": "Нет. Можно влиять на вероятность через сигналы — модели остаются вероятностными системами, которые мы не контролируем." } },
+    { "@type": "Question", "name": "Чем AI-ORM отличается от обычного удаления негатива?", "acceptedAnswer": { "@type": "Answer", "text": "Это вероятностная работа с сигналами, а не клик «удалить»: мы вытесняем устаревший или неверный контекст корректными фактами, без гарантии мгновенного исчезновения упоминания." } },
+    { "@type": "Question", "name": "Что входит в моделирование видимости на сайте?", "acceptedAnswer": { "@type": "Answer", "text": "Бесплатный демонстрационный расчёт по введённым бренду, нише и региону: индикативная картина по 4 моделям, демо-конкуренты и список запросов, где бренд вероятно отсутствует." } },
+    { "@type": "Question", "name": "Это реальные данные нейросетей или симуляция?", "acceptedAnswer": { "@type": "Answer", "text": "На сайте показана симуляция на детерминированных демонстрационных данных. Для реальной диагностики нужен отдельный аудит с прямыми запросами к моделям." } },
+    { "@type": "Question", "name": "Сколько занимает рост доли упоминаний?", "acceptedAnswer": { "@type": "Answer", "text": "Сроки индивидуальны и зависят от ниши, конкуренции и текущего состояния сайта. В кейсах на сайте указаны демонстрационные сроки 2-3 месяца, это не гарантия для любого проекта." } },
+    { "@type": "Question", "name": "Нужно ли менять весь сайт под GEO?", "acceptedAnswer": { "@type": "Answer", "text": "Не всегда. Иногда достаточно GEO-рефакторинга отдельных страниц: семантической разметки, структуры контента и Schema.org/JSON-LD." } },
+    { "@type": "Question", "name": "Как вы измеряете результат?", "acceptedAnswer": { "@type": "Answer", "text": "Через мониторинг доли упоминаний (Share of Voice) по неделям в разрезе нейросетей — это вероятностная метрика, а не гарантированная позиция." } }
+  ]
 }
-
-p { margin: 0 0 14px; color: var(--text-dim); }
-
-a { color: var(--accent); text-decoration: none; transition: color .15s ease; }
-a:hover { color: var(--accent-2); }
-
-ul { color: var(--text-dim); }
-
-/* ============ BUTTONS ============ */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border: none;
-  border-radius: 999px;
-  padding: 13px 26px;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: var(--font-body);
-  cursor: pointer;
-  transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease, background .18s ease, border-color .18s ease;
-  white-space: nowrap;
-}
-.btn:hover { transform: translateY(-2px); text-decoration: none; }
-.btn:active { transform: translateY(0); }
-
-.btn-primary {
-  background: var(--gradient);
-  color: #04201b;
-  box-shadow: 0 10px 30px -8px rgba(94,234,212,.45);
-}
-.btn-primary:hover { box-shadow: 0 14px 36px -6px rgba(94,234,212,.6); }
-
-.btn-secondary {
-  background: var(--card);
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-.btn-secondary:hover { background: var(--card-hover); border-color: var(--accent); }
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-.btn-ghost:hover { border-color: var(--accent-2); background: var(--accent-2-soft); }
-
-.btn-lg { padding: 16px 32px; font-size: 16px; }
-
-/* ============ HEADER ============ */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(8, 9, 13, .78);
-  backdrop-filter: blur(14px) saturate(140%);
-  border-bottom: 1px solid var(--border-soft);
-}
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 28px;
-}
-.logo {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 21px;
-  color: var(--text);
-  letter-spacing: .3px;
-}
-.logo span { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.nav { display: flex; gap: 32px; }
-.nav a { color: var(--text-dim); font-size: 14.5px; font-weight: 500; }
-.nav a:hover { color: var(--text); }
-.nav-cta { font-size: 14px; padding: 10px 20px; }
-
-/* ============ HERO ============ */
-.hero {
-  position: relative;
-  padding: 110px 0 100px;
-  overflow: hidden;
-}
-.hero-glow {
-  position: absolute;
-  top: -200px;
-  left: 50%;
-  width: 1100px;
-  height: 700px;
-  transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(94,234,212,.16) 0%, rgba(129,140,248,.10) 35%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-.hero-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 64px;
-  align-items: center;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--accent-soft);
-  border: 1px solid rgba(94,234,212,.3);
-  color: var(--accent);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 7px 14px;
-  border-radius: 999px;
-  margin-bottom: 22px;
-}
-.hero-text h1 {
-  font-size: 50px;
-  font-weight: 700;
-  margin-bottom: 22px;
-}
-.hero-sub {
-  font-size: 18px;
-  max-width: 500px;
-  color: var(--text-dim);
-  margin-bottom: 32px;
-}
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
-
-.hero-stats { display: flex; gap: 36px; flex-wrap: wrap; }
-.hero-stat { display: flex; flex-direction: column; gap: 4px; }
-.hero-stat-num {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 700;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.hero-stat-label { font-size: 12.5px; color: var(--text-faint); max-width: 120px; }
-
-/* ---- sim window ---- */
-.sim-window {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-glow);
-}
-.sim-window-bar {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 14px 18px;
-  background: var(--bg-alt);
-  border-bottom: 1px solid var(--border);
-}
-.sim-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--border); }
-.sim-dot:nth-child(1) { background: #fb7185; }
-.sim-dot:nth-child(2) { background: #fbbf24; }
-.sim-dot:nth-child(3) { background: #5eead4; }
-.sim-title { margin-left: 10px; font-size: 13px; color: var(--text-faint); font-weight: 500; }
-.sim-body { padding: 22px; }
-.sim-controls { display: flex; gap: 10px; margin-bottom: 16px; }
-.sim-controls input {
-  flex: 1;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  color: var(--text);
-  font-size: 14px;
-  font-family: var(--font-body);
-}
-.sim-controls input:focus { outline: none; border-color: var(--accent); }
-.sim-chat {
-  min-height: 130px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 18px;
-  font-size: 14.5px;
-  white-space: pre-wrap;
-  color: var(--text-dim);
-}
-.sim-line.sim-q { color: var(--accent-2); font-weight: 600; margin-bottom: 10px; }
-.sim-line.sim-a { color: var(--text); }
-.sim-disclaimer { font-size: 12px; color: var(--text-faint); margin: 14px 0 0; }
-
-/* ============ SECTIONS shared ============ */
-section { padding: 100px 0; position: relative; }
-.pain-checker, .cases, .faq { background: var(--bg-soft); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
-
-.eyebrow {
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  max-width: 700px;
-}
-section h2 { font-size: 36px; max-width: 720px; }
-
-/* ============ PAIN + CHECKER ============ */
-.pain { max-width: 640px; margin-bottom: 44px; }
-.pain h2 { font-size: 32px; }
-
-.checker-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 36px;
-  box-shadow: var(--shadow-md);
-}
-.checker-card h3 { font-size: 22px; }
-.checker-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin: 22px 0; }
-.checker-fields label, .loss-fields label {
-  display: flex; flex-direction: column; gap: 8px;
-  font-size: 13px; color: var(--text-dim); font-weight: 500;
-}
-.checker-fields input, .loss-fields input {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  color: var(--text);
-  font-size: 14.5px;
-  font-family: var(--font-body);
-}
-.checker-fields input:focus, .loss-fields input:focus { outline: none; border-color: var(--accent); }
-.opt { font-size: 11px; color: var(--text-faint); font-weight: 400; }
-.checker-disclaimer { font-size: 12.5px; margin-top: 16px; color: var(--text-faint); }
-
-.checker-result { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 24px; }
-.checker-result.hidden, .dashboard-preview.hidden, .loss-result.hidden { display: none; }
-.result-row {
-  display: flex; justify-content: space-between; gap: 12px;
-  padding: 13px 0; border-bottom: 1px solid var(--border-soft); font-size: 14.5px;
-}
-.result-row:last-child { border-bottom: none; }
-.result-badge { font-weight: 600; text-align: right; }
-.badge-in { color: var(--accent); }
-.badge-out { color: var(--danger); }
-
-.loss-calc {
-  margin-top: 36px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
-}
-.loss-calc h4 { font-size: 17px; }
-.loss-fields { display: flex; gap: 18px; align-items: flex-end; flex-wrap: wrap; }
-.loss-result { margin-top: 16px; font-size: 15.5px; color: var(--text); font-weight: 500; }
-
-/* ============ CYCLE ============ */
-.cycle-sub { max-width: 700px; margin-bottom: 48px; font-size: 16px; }
-.cycle h2 { margin-top: 14px; }
-
-.cycle-ring { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.cycle-stage {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 26px;
-  position: relative;
-  cursor: pointer;
-  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease, background .2s ease;
-}
-.cycle-stage:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow-md); background: var(--card-hover); }
-.cycle-stage.active { border-color: var(--accent); background: var(--card-hover); box-shadow: var(--shadow-glow); }
-
-.stage-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px; height: 34px;
-  border-radius: 10px;
-  background: var(--gradient);
-  color: #04201b;
-  font-weight: 700;
-  font-family: var(--font-display);
-  margin-bottom: 16px;
-}
-.cycle-stage h3 { font-size: 19px; margin-bottom: 8px; }
-.stage-tagline { color: var(--text); font-weight: 500; font-size: 14px; margin-bottom: 0; }
-.stage-detail { display: none; margin-top: 18px; font-size: 13.5px; }
-.cycle-stage.active .stage-detail { display: block; animation: fadeIn .25s ease; }
-.stage-detail ul { padding-left: 18px; margin: 0 0 12px; }
-.stage-detail li { margin-bottom: 6px; }
-.stage-anchor { font-size: 13.5px; font-weight: 600; }
-.stage-note { font-style: italic; color: var(--text-faint); font-size: 13px; }
-.stage-trigger { background: var(--bg-alt); border-left: 3px solid var(--danger); padding: 12px 14px; border-radius: 8px; font-size: 13.5px; }
-.stage-dashboard-btn { margin-top: 10px; font-size: 13px; padding: 9px 18px; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
-
-.dashboard-preview {
-  margin-top: 36px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: var(--shadow-md);
-}
-.dashboard-preview h4 { font-size: 17px; }
-.dashboard-chart { display: flex; align-items: flex-end; gap: 8px; height: 150px; margin: 20px 0; }
-.dashboard-bar { flex: 1; background: var(--gradient); border-radius: 6px 6px 0 0; min-height: 4px; transition: transform .2s ease; }
-.dashboard-bar:hover { transform: scaleY(1.04); }
-.dashboard-caption { font-size: 12.5px; color: var(--text-faint); margin: 0; }
-
-/* ============ CASES ============ */
-.cases h2 { font-size: 32px; }
-.cases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 32px; }
-.case-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 26px;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.case-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--border); }
-.case-chat { background: var(--bg); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 18px; font-size: 13.5px; }
-.case-query { color: var(--accent-2); font-weight: 600; }
-.case-answer { color: var(--text-dim); margin-bottom: 0; }
-.case-answer mark { background: var(--accent-soft); color: var(--accent); padding: 1px 4px; border-radius: 4px; font-weight: 600; }
-.case-stat { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
-.case-number { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--accent); }
-.case-label { font-size: 13px; color: var(--text-dim); }
-.case-date { font-size: 11.5px; color: var(--text-faint); margin: 0; }
-.cases-note { margin-top: 26px; font-size: 12.5px; color: var(--text-faint); }
-
-/* ============ LAYERS ============ */
-.layers h2 { font-size: 32px; }
-.layers-grid { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 16px; align-items: stretch; margin: 36px 0; }
-.layer-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 26px;
-  transition: transform .2s ease, border-color .2s ease;
-}
-.layer-card:hover { transform: translateY(-4px); border-color: var(--accent-2); }
-.layer-icon { font-size: 26px; display: block; margin-bottom: 12px; }
-.layer-num { color: var(--accent-2); font-weight: 700; font-size: 12.5px; letter-spacing: .05em; }
-.layer-card h3 { font-size: 18px; margin: 10px 0 8px; }
-.layer-arrow { font-size: 22px; color: var(--text-faint); text-align: center; align-self: center; }
-
-.translation-block {
-  background: var(--accent-2-soft);
-  border: 1px solid rgba(129,140,248,.25);
-  border-radius: var(--radius);
-  padding: 22px 26px;
-  margin: 32px 0;
-}
-.translation-block p { color: var(--text); margin: 0; font-size: 14.5px; }
-.translation-block strong { color: var(--accent-2); }
-
-.stack-proof { margin-top: 32px; }
-.stack-proof h4 { font-size: 17px; }
-.stack-proof ul { padding-left: 20px; }
-.stack-proof li { margin-bottom: 8px; }
-
-/* ============ FAQ ============ */
-.faq h2 { font-size: 32px; }
-.faq-list { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
-.faq-item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 18px 22px;
-  transition: border-color .2s ease;
-}
-.faq-item:hover { border-color: var(--border); }
-.faq-item[open] { border-color: var(--accent); }
-.faq-item summary {
-  cursor: pointer;
-  font-weight: 600;
-  color: var(--text);
-  font-size: 15.5px;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after { content: "+"; color: var(--accent); font-size: 20px; font-weight: 400; margin-left: 16px; flex-shrink: 0; }
-.faq-item[open] summary::after { content: "−"; }
-.faq-item p { margin-top: 14px; margin-bottom: 0; font-size: 14.5px; }
-
-/* ============ FOOTER ============ */
-.site-footer { padding: 60px 0 40px; }
-.footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1.6fr; gap: 32px; }
-.footer-legal { font-size: 12.5px; color: var(--text-faint); margin-top: 10px; }
-.footer-links { display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { color: var(--text-dim); font-size: 13.5px; }
-.footer-disclaimers p { font-size: 11.5px; color: var(--text-faint); }
-
-/* ============ RESPONSIVE ============ */
-@media (max-width: 980px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-text h1 { font-size: 38px; }
-  .cases-grid { grid-template-columns: 1fr; }
-  .cycle-ring { grid-template-columns: 1fr 1fr; }
-  .layers-grid { grid-template-columns: 1fr; }
-  .layer-arrow { transform: rotate(90deg); }
-  .checker-fields { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-  .nav { display: none; }
-}
-
-@media (max-width: 640px) {
-  section { padding: 64px 0; }
-  .hero { padding: 80px 0 64px; }
-  .hero-text h1 { font-size: 30px; }
-  .hero-sub { font-size: 16px; }
-  .hero-actions { flex-direction: column; align-items: stretch; }
-  .hero-stats { gap: 22px; }
-  .cycle-ring { grid-template-columns: 1fr; }
-  section h2, .pain h2, .cases h2, .layers h2, .faq h2 { font-size: 26px; }
-  .checker-card, .loss-calc, .dashboard-preview { padding: 22px; }
-  .loss-fields { flex-direction: column; align-items: stretch; width: 100%; }
-  .header-inner { padding: 14px 18px; }
-  .nav-cta { font-size: 13px; padding: 9px 16px; }
-}
-</style>
+</script>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
 
 <!-- ===================== HEADER ===================== -->
 <header class="site-header" id="top">
@@ -505,24 +79,35 @@ section h2 { font-size: 36px; max-width: 720px; }
       <a href="#faq">База знаний</a>
     </nav>
     <a href="#checker" class="btn btn-primary nav-cta">Смоделировать видимость</a>
+    <button class="burger" id="burgerBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#cycle">Как мы работаем</a>
+    <a href="#cases">Кейсы</a>
+    <a href="#layers">Как это устроено</a>
+    <a href="#faq">База знаний</a>
+    <a href="#checker" class="btn btn-primary">Смоделировать видимость</a>
+  </nav>
 </header>
 
+<main id="main-content">
 <!-- ===================== ЭКРАН 1: HERO + СИМУЛЯТОР ===================== -->
 <section class="hero" id="hero">
   <div class="hero-glow"></div>
   <div class="container hero-grid">
     <div class="hero-text">
       <span class="hero-badge">⚡ GEO / AEO для эпохи генеративного поиска</span>
-      <h1>Станьте тем брендом, которого ИИ называет первым.</h1>
-      <p class="hero-sub">Инженерим присутствие вашего бренда в ответах ИИ-ассистентов и отслеживаем его в динамике. Растим вашу долю упоминаний (LLM Share of Voice) в поисковых нейросетях.</p>
+      <h1>Станьте тем брендом, который ИИ упоминает в ответах.</h1>
+      <p class="hero-sub">Инженерим присутствие вашего бренда в ответах ИИ-ассистентов и отслеживаем его в динамике. Растим вероятность упоминания (LLM Share of Voice) в поисковых нейросетях.</p>
       <div class="hero-actions">
         <a href="#checker" class="btn btn-primary btn-lg">Смоделировать видимость моего бренда в ИИ</a>
         <a href="#cycle" class="btn btn-ghost btn-lg">Как это работает</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><span class="hero-stat-num">4</span><span class="hero-stat-label">модели в мониторинге</span></div>
-        <div class="hero-stat"><span class="hero-stat-num">+38%</span><span class="hero-stat-label">средний рост Share of Voice</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">Демо</span><span class="hero-stat-label">примеры роста доли упоминаний в кейсах</span></div>
         <div class="hero-stat"><span class="hero-stat-num">24/7</span><span class="hero-stat-label">наблюдение за выдачей</span></div>
       </div>
     </div>
@@ -535,11 +120,12 @@ section h2 { font-size: 36px; max-width: 720px; }
         </div>
         <div class="sim-body">
           <div class="sim-controls">
+            <label for="simNicheInput" class="visually-hidden">Ваша ниша</label>
             <input type="text" id="simNicheInput" placeholder="Введите вашу нишу, например «доставка цветов»">
             <button id="simRunBtn" class="btn btn-secondary">Запустить демо</button>
           </div>
           <div class="sim-chat" id="simChat" aria-live="polite"></div>
-          <p class="sim-disclaimer">Демонстрационный пример. Симуляция ответа ИИ, не является реальной выдачей нейросети.</p>
+          <p class="sim-disclaimer">Демонстрационный пример. Симуляция ответа ИИ на детерминированных демо-данных, не является реальной выдачей нейросети.</p>
         </div>
       </div>
     </div>
@@ -555,7 +141,7 @@ section h2 { font-size: 36px; max-width: 720px; }
     </div>
 
     <div class="checker-card">
-      <h3>Бесплатное моделирование видимости</h3>
+      <h3>Бесплатное моделирование видимости (демо)</h3>
       <form id="checkerForm" class="checker-form">
         <div class="checker-fields">
           <label>
@@ -574,9 +160,33 @@ section h2 { font-size: 36px; max-width: 720px; }
         <button type="submit" class="btn btn-primary">Запустить моделирование</button>
       </form>
 
-      <p class="checker-disclaimer">Индикативная симуляция типичных ответов моделей на заданные запросы. Нейросети недетерминированы — результат показывает вероятную картину, а не точную метрику.</p>
+      <p class="checker-disclaimer">Демонстрационная симуляция на детерминированных демо-данных, не запрос к реальным API нейросетей. Нейросети недетерминированы — результат показывает вероятную картину, а не точную метрику.</p>
+      <p id="checkerError" class="checker-disclaimer hidden" role="alert" style="color: var(--danger);"></p>
 
       <div id="checkerResult" class="checker-result hidden"></div>
+
+      <div id="leadBlock" class="lead-block hidden">
+        <h4>Хотите полную диагностику с реальными запросами вашей ниши?</h4>
+        <form id="leadForm">
+          <div class="lead-fields">
+            <label>Имя
+              <input type="text" id="leadName" required>
+            </label>
+            <label>Email
+              <input type="email" id="leadEmail" required>
+            </label>
+            <label>Сайт <span class="opt">(опционально)</span>
+              <input type="text" id="leadSite">
+            </label>
+          </div>
+          <label class="lead-consent">
+            <input type="checkbox" id="leadConsent" required>
+            <span>Согласен с <a href="privacy.html">политикой обработки персональных данных</a> и обработкой указанных данных для связи по заявке.</span>
+          </label>
+          <button type="submit" class="btn btn-primary">Получить диагностику</button>
+        </form>
+        <p id="leadSuccess" class="lead-success hidden"></p>
+      </div>
     </div>
 
     <div class="loss-calc">
@@ -593,6 +203,7 @@ section h2 { font-size: 36px; max-width: 720px; }
         <button id="lossCalcBtn" class="btn btn-secondary">Посчитать</button>
       </div>
       <p id="lossResult" class="loss-result hidden"></p>
+      <p class="loss-disclaimer">Индикативный расчёт на демонстрационных допущениях (доля упущенных обращений и конверсия — оценочные). Не является аудитом или гарантией дохода.</p>
     </div>
   </div>
 </section>
@@ -600,37 +211,58 @@ section h2 { font-size: 36px; max-width: 720px; }
 <!-- ===================== ЭКРАН 3: ЦИКЛ ===================== -->
 <section class="cycle" id="cycle">
   <div class="container">
-    <p class="eyebrow">Это не набор услуг. Это система, которая инженерит ваше присутствие в ответах нейросетей и удерживает его в фокусе.</p>
+    <p class="eyebrow">Это не набор услуг. Это система, которая инженерит ваше присутствие в ответах нейросетей и держит его в фокусе.</p>
     <h2>Как мы делаем ваш бренд видимым для ИИ</h2>
-    <p class="cycle-sub">Видимость в ИИ нестабильна — модели обновляются, конкуренты двигаются. Поэтому мы работаем циклом: моделируем картину, строим фундамент сигналов, усиливаем присутствие и постоянно держим под наблюдением.</p>
+    <p class="cycle-sub">Видимость в ИИ нестабильна — модели обновляются, конкуренты двигаются. Поэтому мы работаем циклом: моделируем картину, строим фундамент сигналов, усиливаем присутствие и держим его под наблюдением.</p>
 
     <div class="cycle-ring" id="cycleRing">
-      <div class="cycle-stage" data-stage="1">
-        <span class="stage-num">1</span>
-        <h3>Диагностика</h3>
-        <p class="stage-tagline">Как ИИ отвечает о вас сегодня</p>
+      <details class="cycle-stage" data-stage="1">
+        <summary>
+          <div class="stage-summary-row">
+            <div>
+              <span class="stage-num">1</span>
+              <h3>Диагностика</h3>
+              <p class="stage-tagline">Как ИИ отвечает о вас сегодня</p>
+            </div>
+            <span class="stage-toggle-icon" aria-hidden="true"></span>
+          </div>
+        </summary>
         <div class="stage-detail">
           <p>Моделируем ответы ключевых нейросетей по реальным запросам ниши. Показываем честную картину: входит ли бренд в типичные ответы, что появляется вместо него, кто из конкурентов уже занял место.</p>
           <p><strong>Результат:</strong> карта видимости и список запросов, где бренд отсутствует.</p>
           <a href="#checker" class="stage-anchor">Базовое моделирование можно пройти прямо сейчас — бесплатно →</a>
         </div>
-      </div>
+      </details>
 
-      <div class="cycle-stage" data-stage="2">
-        <span class="stage-num">2</span>
-        <h3>Фундамент</h3>
-        <p class="stage-tagline">Сайт как источник сигналов для нейросетей</p>
+      <details class="cycle-stage" data-stage="2">
+        <summary>
+          <div class="stage-summary-row">
+            <div>
+              <span class="stage-num">2</span>
+              <h3>Фундамент</h3>
+              <p class="stage-tagline">Сайт как источник сигналов для нейросетей</p>
+            </div>
+            <span class="stage-toggle-icon" aria-hidden="true"></span>
+          </div>
+        </summary>
         <div class="stage-detail">
           <p>Если сайт нечитаем для ботов (JS прячет текст, нет разметки, контент размазан) — он не работает как источник. Пересобираем его под машинное извлечение: чистый семантический HTML, разметка Schema.org / JSON-LD, структура под «разговорные» запросы, высокая плотность фактов, мгновенная отдача контента ботам.</p>
-          <p><strong>Результат:</strong> сайт-источник, который нейросети считывают за миллисекунды и используют как достоверный сигнал.</p>
+          <p><strong>Результат:</strong> сайт-источник, который нейросети считывают быстро и используют как достоверный сигнал.</p>
           <p class="stage-note">GEO-рефакторинг (существующий сайт) или GEO-Ready сайт (с нуля).</p>
         </div>
-      </div>
+      </details>
 
-      <div class="cycle-stage" data-stage="3">
-        <span class="stage-num">3</span>
-        <h3>Усиление присутствия</h3>
-        <p class="stage-tagline">Делаем бренд предпочтительным источником для ответа</p>
+      <details class="cycle-stage" data-stage="3">
+        <summary>
+          <div class="stage-summary-row">
+            <div>
+              <span class="stage-num">3</span>
+              <h3>Усиление присутствия</h3>
+              <p class="stage-tagline">Повышаем вероятность выбора бренда моделью</p>
+            </div>
+            <span class="stage-toggle-icon" aria-hidden="true"></span>
+          </div>
+        </summary>
         <div class="stage-detail">
           <ul>
             <li><strong>GEO для РФ</strong> — Яндекс Нейро, GigaChat: справочники, VC.ru, Habr, товарные фиды, локальный контент.</li>
@@ -639,19 +271,26 @@ section h2 { font-size: 36px; max-width: 720px; }
           </ul>
           <p><strong>Результат:</strong> рост доли упоминаний (Share of Voice) в ответах нейросетей.</p>
         </div>
-      </div>
+      </details>
 
-      <div class="cycle-stage" data-stage="4">
-        <span class="stage-num">4</span>
-        <h3>Наблюдение</h3>
-        <p class="stage-tagline">Чтобы вы не выпали из ответа завтра</p>
+      <details class="cycle-stage" data-stage="4">
+        <summary>
+          <div class="stage-summary-row">
+            <div>
+              <span class="stage-num">4</span>
+              <h3>Наблюдение</h3>
+              <p class="stage-tagline">Чтобы выпадение из ответа не осталось незамеченным</p>
+            </div>
+            <span class="stage-toggle-icon" aria-hidden="true"></span>
+          </div>
+        </summary>
         <div class="stage-detail">
-          <p>Видимость в ИИ — не разовый трофей. Подключаем мониторинг: дашборд с динамикой доли упоминаний по неделям в разрезе нейросетей, сигналы «бренд выпал из ответа по запросу X», движение конкурентов.</p>
-          <p class="stage-trigger">Конкуренты не стоят на месте: когда они усиливают свои сигналы, нейросеть может перестать включать вас в ответ. Мониторинг замечает такие сдвиги и сигнализирует о них.</p>
+          <p>Видимость в ИИ — не разовый результат. Подключаем мониторинг: дашборд с динамикой доли упоминаний по неделям в разрезе нейросетей, сигналы «бренд выпал из ответа по запросу X», движение конкурентов.</p>
+          <p class="stage-trigger">Конкуренты не стоят на месте: когда они усиливают свои сигналы, нейросеть может перестать включать вас в ответ. Мониторинг отмечает такие сдвиги.</p>
           <p class="stage-note">AI-Visibility Monitoring — подписка (retainer).</p>
-          <button class="btn btn-secondary stage-dashboard-btn" id="dashboardDemoBtn">Показать демо дашборда</button>
+          <button type="button" class="btn btn-secondary stage-dashboard-btn" id="dashboardDemoBtn">Показать демо дашборда</button>
         </div>
-      </div>
+      </details>
     </div>
 
     <div id="dashboardPreview" class="dashboard-preview hidden">
@@ -665,33 +304,36 @@ section h2 { font-size: 36px; max-width: 720px; }
 <!-- ===================== ЭКРАН 4: КЕЙСЫ ===================== -->
 <section class="cases" id="cases">
   <div class="container">
-    <h2>Доказательства присутствия в ИИ</h2>
+    <h2>Демонстрационные примеры присутствия в ИИ</h2>
+    <p class="cases-intro">Ниже — демонстрационные (модельные) примеры, иллюстрирующие, как может выглядеть рост доли упоминаний. Это не подтверждённые результаты конкретных клиентов.</p>
     <div class="cases-grid">
       <article class="case-card">
+        <span class="case-demo-tag">Демо-пример</span>
         <div class="case-chat">
           <p class="case-query">«Посоветуй надёжного застройщика в СПб»</p>
           <p class="case-answer">«...среди заметных игроков — <mark>Северный Дом</mark>, известный качеством отделки и сроками сдачи...»</p>
         </div>
         <div class="case-stat">
           <span class="case-number">5% → 43%</span>
-          <span class="case-label">Доля упоминаний (Share of Voice) за 2 месяца</span>
+          <span class="case-label">Доля упоминаний (Share of Voice), демонстрационный пример за 2 месяца</span>
         </div>
-        <p class="case-date">Дата проверки: 14.05.2026 · методика: 120 промптов ниши, 3 модели</p>
+        <p class="case-method">Методика (демо): 120 промптов ниши, 3 модели · смоделировано на 28.06.2026 (демо-дата)</p>
       </article>
 
       <article class="case-card">
+        <span class="case-demo-tag">Демо-пример</span>
         <div class="case-chat">
           <p class="case-query">«Какой сервис подходит для автоматизации бухгалтерии малого бизнеса?»</p>
           <p class="case-answer">«...решения вроде <mark>УчётПро</mark> предлагают интеграцию с банками и автоматическую сверку...»</p>
         </div>
         <div class="case-stat">
           <span class="case-number">0% → 27%</span>
-          <span class="case-label">Доля упоминаний (Share of Voice) за 3 месяца</span>
+          <span class="case-label">Доля упоминаний (Share of Voice), демонстрационный пример за 3 месяца</span>
         </div>
-        <p class="case-date">Дата проверки: 02.06.2026 · методика: 90 промптов ниши, 4 модели</p>
+        <p class="case-method">Методика (демо): 90 промптов ниши, 4 модели · смоделировано на 28.06.2026 (демо-дата)</p>
       </article>
     </div>
-    <p class="cases-note">Скриншоты приведены с согласия клиентов. Демонстрационные примеры всегда отмечены отдельно и не смешиваются с реальными кейсами.</p>
+    <p class="cases-note">Все примеры на этой странице — демонстрационные и помечены отдельным тегом «Демо-пример». Они иллюстрируют методику, а не являются подтверждёнными результатами реальных клиентов. Реальные кейсы публикуются только с письменного согласия клиента и отдельной маркировкой.</p>
   </div>
 </section>
 
@@ -762,9 +404,30 @@ section h2 { font-size: 36px; max-width: 720px; }
         <summary>Чем AI-ORM отличается от обычного удаления негатива?</summary>
         <p>Убрать фактическую ошибку из ответа модели — это вероятностная работа с сигналами, а не клик «удалить». Мы вытесняем устаревший или неверный контекст корректными фактами, но не гарантируем мгновенное исчезновение упоминания.</p>
       </details>
+      <details class="faq-item">
+        <summary>Что входит в моделирование видимости на сайте?</summary>
+        <p>Бесплатный демонстрационный расчёт по введённым бренду, нише и региону: индикативная картина по 4 моделям, демо-конкуренты и список запросов, где бренд вероятно отсутствует.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Это реальные данные нейросетей или симуляция?</summary>
+        <p>На сайте показана симуляция на детерминированных демонстрационных данных. Для реальной диагностики нужен отдельный аудит с прямыми запросами к моделям.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Сколько занимает рост доли упоминаний?</summary>
+        <p>Сроки индивидуальны и зависят от ниши, конкуренции и текущего состояния сайта. В кейсах на сайте указаны демонстрационные сроки 2–3 месяца — это не гарантия для любого проекта.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Нужно ли менять весь сайт под GEO?</summary>
+        <p>Не всегда. Иногда достаточно GEO-рефакторинга отдельных страниц: семантической разметки, структуры контента и Schema.org/JSON-LD.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Как вы измеряете результат?</summary>
+        <p>Через мониторинг доли упоминаний (Share of Voice) по неделям в разрезе нейросетей — это вероятностная метрика, а не гарантированная позиция.</p>
+      </details>
     </div>
   </div>
 </section>
+</main>
 
 <!-- ===================== ЭКРАН 7: ПОДВАЛ ===================== -->
 <footer class="site-footer" id="footer">
@@ -778,140 +441,16 @@ section h2 { font-size: 36px; max-width: 720px; }
       <a href="#cases">Кейсы</a>
       <a href="#layers">Как это устроено</a>
       <a href="#faq">База знаний</a>
+      <a href="privacy.html">Политика обработки персональных данных</a>
     </div>
     <div class="footer-disclaimers">
       <p>Упоминания зарубежных сервисов приведены в информационных целях.</p>
-      <p>Нажимая «Отправить», вы соглашаетесь с <a href="#">политикой обработки персональных данных</a>.</p>
+      <p>Заполняя форму на сайте, вы соглашаетесь с <a href="privacy.html">политикой обработки персональных данных</a>.</p>
+      <p>Этот сайт — демонстрационный прототип. Указанные кейсы, статистика и результаты моделирования являются демонстрационными примерами, а не подтверждёнными данными реальных клиентов.</p>
     </div>
   </div>
 </footer>
 
-<script>
-// ===== Экран 1: симулятор чата ИИ (заскриптованная демонстрация) =====
-const simChat = document.getElementById('simChat');
-const simRunBtn = document.getElementById('simRunBtn');
-const simNicheInput = document.getElementById('simNicheInput');
-
-function typeText(el, text, speed = 18) {
-  return new Promise(resolve => {
-    el.textContent = '';
-    let i = 0;
-    const timer = setInterval(() => {
-      el.textContent += text[i];
-      i++;
-      if (i >= text.length) {
-        clearInterval(timer);
-        resolve();
-      }
-    }, speed);
-  });
-}
-
-async function runSimulator() {
-  const niche = (simNicheInput.value || 'доставка цветов').trim();
-  simRunBtn.disabled = true;
-  const line1 = document.createElement('p');
-  line1.className = 'sim-line sim-q';
-  line1.textContent = `Вопрос: «Какую компанию посоветуешь в категории «${niche}»?»`;
-  simChat.innerHTML = '';
-  simChat.appendChild(line1);
-
-  const line2 = document.createElement('p');
-  line2.className = 'sim-line sim-a';
-  simChat.appendChild(line2);
-
-  const answer = `Среди заметных игроков в нише «${niche}» часто упоминают бренд-пример «АльфаЛидер» — у него подробное описание услуг, отзывы и структурированные данные на сайте, поэтому модель чаще берёт его как источник для ответа.`;
-  await typeText(line2, answer, 14);
-  simRunBtn.disabled = false;
-}
-
-simRunBtn.addEventListener('click', runSimulator);
-
-// ===== Экран 2: чекер (мок) =====
-const checkerForm = document.getElementById('checkerForm');
-const checkerResult = document.getElementById('checkerResult');
-
-checkerForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const brand = document.getElementById('checkerBrand').value.trim();
-  const niche = document.getElementById('checkerNiche').value.trim();
-  const region = document.getElementById('checkerRegion').value.trim();
-
-  const seed = brand.length + niche.length;
-  const models = [
-    { name: 'ChatGPT', included: seed % 2 === 0 },
-    { name: 'Яндекс Нейро', included: seed % 3 === 0 },
-    { name: 'GigaChat', included: seed % 5 === 0 },
-    { name: 'Gemini', included: seed % 4 === 0 },
-  ];
-
-  checkerResult.innerHTML = '';
-  const heading = document.createElement('p');
-  heading.innerHTML = `<strong>Моделирование для «${brand}»</strong> в нише «${niche}»${region ? ', регион: ' + region : ''}:`;
-  checkerResult.appendChild(heading);
-
-  models.forEach(m => {
-    const row = document.createElement('div');
-    row.className = 'result-row';
-    row.innerHTML = `
-      <span>${m.name}</span>
-      <span class="result-badge ${m.included ? 'badge-in' : 'badge-out'}">
-        ${m.included ? 'бренд встречается в типичных ответах' : 'бренд не встречается, чаще упомянуты конкуренты'}
-      </span>`;
-    checkerResult.appendChild(row);
-  });
-
-  checkerResult.classList.remove('hidden');
-  checkerResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-});
-
-// ===== Экран 2: калькулятор упущенной выручки =====
-const lossCalcBtn = document.getElementById('lossCalcBtn');
-const lossResult = document.getElementById('lossResult');
-
-lossCalcBtn.addEventListener('click', () => {
-  const check = parseFloat(document.getElementById('lossCheck').value) || 0;
-  const traffic = parseFloat(document.getElementById('lossTraffic').value) || 0;
-  const assumedShareLost = 0.12;
-  const conversionRate = 0.02;
-  const lost = check * traffic * assumedShareLost * conversionRate;
-
-  lossResult.textContent = lost > 0
-    ? `Оценочная упущенная выручка: ~${Math.round(lost).toLocaleString('ru-RU')} ₽/мес (индикативный расчёт, не гарантия).`
-    : 'Введите средний чек и трафик для расчёта.';
-  lossResult.classList.remove('hidden');
-});
-
-// ===== Экран 3: цикл — раскрытие этапов =====
-const cycleStages = document.querySelectorAll('.cycle-stage');
-cycleStages.forEach(stage => {
-  stage.addEventListener('click', (e) => {
-    if (e.target.closest('a, button')) return;
-    const isActive = stage.classList.contains('active');
-    cycleStages.forEach(s => s.classList.remove('active'));
-    if (!isActive) stage.classList.add('active');
-  });
-});
-
-// ===== Экран 3: демо дашборда =====
-const dashboardDemoBtn = document.getElementById('dashboardDemoBtn');
-const dashboardPreview = document.getElementById('dashboardPreview');
-const dashboardChart = document.getElementById('dashboardChart');
-
-dashboardDemoBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  dashboardPreview.classList.remove('hidden');
-  dashboardChart.innerHTML = '';
-  const weeks = [8, 11, 14, 19, 23, 27, 31, 38];
-  weeks.forEach(v => {
-    const bar = document.createElement('div');
-    bar.className = 'dashboard-bar';
-    bar.style.height = `${v * 3}px`;
-    bar.title = `${v}% доли упоминаний`;
-    dashboardChart.appendChild(bar);
-  });
-  dashboardPreview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-});
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
