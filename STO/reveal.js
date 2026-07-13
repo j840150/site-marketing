@@ -1,8 +1,8 @@
-/* Автосервис Тамбов — появление блоков при прокрутке.
-   Работает с классами .reveal / .reveal.in, которые уже есть в styles.css.
-   Ничего не меняет в script.js — подключается отдельным <script> тегом. */
+/* Автосервис Тамбов — появление блоков (и карточек внутри них) при прокрутке.
+   Работает с классом .stagger, см. styles.css. Анимация запускается один раз:
+   после появления элемент перестаёт отслеживаться. */
 (function () {
-  var items = document.querySelectorAll('.reveal');
+  var items = document.querySelectorAll('.stagger');
   if (!items.length) return;
 
   // Если у пользователя отключена анимация в системе — просто показываем всё сразу
@@ -12,18 +12,11 @@
     return;
   }
 
-  var observer = new IntersectionObserver(function (entries) {
+  var observer = new IntersectionObserver(function (entries, obs) {
     entries.forEach(function (entry) {
-      // появляется, когда блок входит в область видимости,
-      // и снова скрывается, если полностью уйдёт из неё —
-      // так анимация повторяется и при прокрутке вниз, и вверх
       if (entry.isIntersecting) {
         entry.target.classList.add('in');
-      } else if (entry.boundingClientRect.top > 0) {
-        // сбрасываем только когда блок ушёл ВНИЗ за пределы экрана
-        // (не когда прокрутили дальше него вверх по странице) —
-        // так при обратной прокрутке он снова красиво появится
-        entry.target.classList.remove('in');
+        obs.unobserve(entry.target);
       }
     });
   }, {

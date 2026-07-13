@@ -121,6 +121,7 @@
     <nav class="nav" aria-label="Основная навигация">
       <a href="#services">Услуги</a>
       <a href="#why">Почему мы</a>
+      <a href="#process">Как это работает</a>
       <a href="#promo">Акции</a>
       <a href="#brands">Марки авто</a>
       <a href="#faq">Вопросы</a>
@@ -136,6 +137,7 @@
   <div class="mobile-nav" id="mobile-nav" hidden>
     <a href="#services">Услуги</a>
     <a href="#why">Почему мы</a>
+    <a href="#process">Как это работает</a>
     <a href="#promo">Акции</a>
     <a href="#brands">Марки авто</a>
     <a href="#faq">Вопросы</a>
@@ -149,7 +151,7 @@
 <!-- HERO -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="container hero-grid">
-    <div class="hero-copy">
+    <div class="hero-copy hero-enter">
       <h1 id="hero-title">
         <span class="hero-brand">Автосервис<br>Тамбов</span>
         <span class="hero-sub">Ремонт двигателя, ходовой и тормозов, честная диагностика и ТО</span>
@@ -171,7 +173,7 @@
       </ul>
     </div>
 
-    <figure class="hero-figure">
+    <figure class="hero-figure hero-enter hero-enter-figure">
       <picture>
         <img src="hero-portrait.jpg" alt="Главный специалист автосервиса «Автосервис Тамбов» на фоне поднятого автомобиля" width="1071" height="1920" fetchpriority="high">
       </picture>
@@ -188,7 +190,7 @@
   <div class="container">
     <p class="eyebrow">Почему выбирают нас</p>
     <h2 id="why-title" class="section-title">Сервис, которому <span class="accent">доверяют</span> автомобиль</h2>
-    <div class="why-grid reveal">
+    <div class="why-grid stagger">
       <article class="why-card">
         <div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
         <h3>Честная диагностика</h3>
@@ -228,7 +230,7 @@
   <div class="container">
     <p class="eyebrow">Услуги автосервиса в Тамбове</p>
     <h2 id="services-title" class="section-title">Что мы <span class="accent">ремонтируем</span> и обслуживаем</h2>
-    <div class="services-grid reveal" itemscope itemtype="https://schema.org/OfferCatalog">
+    <div class="services-grid stagger" itemscope itemtype="https://schema.org/OfferCatalog">
       <article class="service-card" itemscope itemprop="itemListElement" itemtype="https://schema.org/Service">
         <span class="service-num">01</span>
         <h3 itemprop="name">Ремонт ходовой</h3>
@@ -271,12 +273,47 @@
   </div>
 </section>
 
+<!-- PROCESS -->
+<section class="section process" id="process" aria-labelledby="process-title">
+  <div class="container">
+    <p class="eyebrow">Как мы работаем</p>
+    <h2 id="process-title" class="section-title">Как проходит <span class="accent">ремонт</span></h2>
+    <ol class="process-grid stagger">
+      <li class="process-step">
+        <span class="process-num">01</span>
+        <h3>Заявка</h3>
+        <p>Оставляете заявку на сайте или звоните — коротко описываете проблему или нужную услугу.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-num">02</span>
+        <h3>Диагностика</h3>
+        <p>Проверяем автомобиль и определяем точную причину неисправности.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-num">03</span>
+        <h3>Согласование</h3>
+        <p>Рассказываем, что нужно сделать сейчас, а что можно отложить — решение за вами.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-num">04</span>
+        <h3>Ремонт</h3>
+        <p>Выполняем согласованные работы на подходящем оборудовании.</p>
+      </li>
+      <li class="process-step">
+        <span class="process-num">05</span>
+        <h3>Выдача</h3>
+        <p>Показываем результат и заменённые детали, отвечаем на оставшиеся вопросы.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
 <!-- PROMO -->
 <section class="section promo" id="promo" aria-labelledby="promo-title">
   <div class="container">
     <p class="eyebrow eyebrow-inverse">Акции</p>
     <h2 id="promo-title" class="section-title section-title-inverse">Выгодные условия <span class="accent">для клиентов</span></h2>
-    <div class="promo-grid reveal">
+    <div class="promo-grid stagger">
       <article class="promo-card">
         <span class="promo-tag">−15%</span>
         <h3>Скидка 15% в день рождения</h3>
@@ -299,7 +336,7 @@
   <div class="container">
     <p class="eyebrow">Наш сервис</p>
     <h2 id="gallery-title" class="section-title">Как выглядит <span class="accent">мастерская</span></h2>
-    <div class="gallery-grid reveal">
+    <div class="gallery-grid stagger">
       <figure class="gallery-item gallery-item-wide">
         <img src="workshop-1.webp" alt="Автомобиль на подъёмнике в автосервисе «Автосервис Тамбов»" loading="lazy" width="1448" height="1086">
       </figure>
@@ -320,7 +357,7 @@
     <h2 id="brands-title" class="section-title">Марки, которые мы <span class="accent">обслуживаем</span></h2>
     <p class="brands-lead">Работаем с большинством массовых марок, представленных на дорогах Тамбова — от японских и корейских моделей до отечественных и китайских. Не нашли свою марку в списке — уточните по телефону, скорее всего, тоже возьмёмся.</p>
     <div class="brands-divider" role="presentation"></div>
-    <ul class="brands-grid reveal">
+    <ul class="brands-grid stagger">
       <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">T</span><img src="https://cdn.simpleicons.org/toyota/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/toyota.com'"></span><span class="brand-label">Toyota</span></li>
       <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">K</span><img src="https://cdn.simpleicons.org/kia/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/kia.com'"></span><span class="brand-label">Kia</span></li>
       <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">H</span><img src="https://cdn.simpleicons.org/hyundai/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/hyundai.com'"></span><span class="brand-label">Hyundai</span></li>
@@ -365,46 +402,46 @@
   <div class="container faq-container">
     <p class="eyebrow">Вопрос–ответ</p>
     <h2 id="faq-title" class="section-title">Частые вопросы <span class="accent">об авто</span></h2>
-    <div class="faq-list reveal">
+    <div class="faq-list stagger">
       <details class="faq-item" open>
         <summary>Когда нужно менять масло в двигателе?</summary>
-        <div class="faq-body"><span class="faq-cat">Двигатель</span><p>В среднем моторное масло меняют каждые 8 000–10 000 км или раз в год. При частых поездках по городу, коротких маршрутах и зимних запусках интервал лучше сокращать. У нас в Тамбове мы подбираем интервал под ваш автомобиль и стиль езды и сразу проверяем уровень и состояние масла.</p></div>
+        <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Двигатель</span><p>В среднем моторное масло меняют каждые 8 000–10 000 км или раз в год. При частых поездках по городу, коротких маршрутах и зимних запусках интервал лучше сокращать. У нас в Тамбове мы подбираем интервал под ваш автомобиль и стиль езды и сразу проверяем уровень и состояние масла.</p></div></div>
       </details>
       <details class="faq-item">
         <summary>Какие признаки говорят о проблемах с двигателем?</summary>
-        <div class="faq-body"><span class="faq-cat">Двигатель</span><p>Насторожить должны: загоревшийся «чек», падение мощности и провалы при разгоне, троение и вибрация на холостых, посторонние стуки, синий или чёрный дым из выхлопа, повышенный расход масла или топлива, перегрев. При любом из этих симптомов лучше сразу сделать компьютерную диагностику двигателя — мы считаем ошибки и найдём причину до того, как поломка станет дорогой.</p></div>
+        <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Двигатель</span><p>Насторожить должны: загоревшийся «чек», падение мощности и провалы при разгоне, троение и вибрация на холостых, посторонние стуки, синий или чёрный дым из выхлопа, повышенный расход масла или топлива, перегрев. При любом из этих симптомов лучше сразу сделать компьютерную диагностику двигателя — мы считаем ошибки и найдём причину до того, как поломка станет дорогой.</p></div></div>
       </details>
       <details class="faq-item">
         <summary>Что входит в диагностику двигателя?</summary>
-        <div class="faq-body"><span class="faq-cat">Двигатель</span><p>Компьютерная диагностика двигателя включает считывание кодов ошибок из блока управления, проверку показаний датчиков в реальном времени, оценку работы системы зажигания, топливоподачи и впуска. При необходимости проверяем компрессию в цилиндрах и состояние свечей. По итогам вы получаете понятное объяснение неисправности и расчёт стоимости ремонта.</p></div>
+        <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Двигатель</span><p>Компьютерная диагностика двигателя включает считывание кодов ошибок из блока управления, проверку показаний датчиков в реальном времени, оценку работы системы зажигания, топливоподачи и впуска. При необходимости проверяем компрессию в цилиндрах и состояние свечей. По итогам вы получаете понятное объяснение неисправности и расчёт стоимости ремонта.</p></div></div>
       </details>
       <details class="faq-item">
         <summary>Когда двигателю нужен ремонт, а не просто обслуживание?</summary>
-        <div class="faq-body"><span class="faq-cat">Двигатель</span><p>Плановое обслуживание (масло, фильтры, свечи) поддерживает двигатель в норме. Ремонт требуется, когда есть конкретная неисправность: стук, потеря компрессии, течь масла или антифриза, перегрев, ошибки по катушкам или форсункам. Точный объём работ мы определяем по результатам диагностики и всегда согласовываем с вами до начала ремонта.</p></div>
+        <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Двигатель</span><p>Плановое обслуживание (масло, фильтры, свечи) поддерживает двигатель в норме. Ремонт требуется, когда есть конкретная неисправность: стук, потеря компрессии, течь масла или антифриза, перегрев, ошибки по катушкам или форсункам. Точный объём работ мы определяем по результатам диагностики и всегда согласовываем с вами до начала ремонта.</p></div></div>
       </details>
       <details class="faq-item">
         <summary>Как понять, что проблема в ходовой части?</summary>
-        <div class="faq-body"><span class="faq-cat">Ходовая</span><p>Основные признаки: стуки и скрипы на неровностях, увод автомобиля в сторону, неравномерный износ шин, вибрация на руле, раскачка кузова после ям. При любом из этих симптомов стоит сделать диагностику ходовой. В Тамбове первая диагностика ходовой у нас — бесплатно.</p></div>
+        <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Ходовая</span><p>Основные признаки: стуки и скрипы на неровностях, увод автомобиля в сторону, неравномерный износ шин, вибрация на руле, раскачка кузова после ям. При любом из этих симптомов стоит сделать диагностику ходовой. В Тамбове первая диагностика ходовой у нас — бесплатно.</p></div></div>
       </details>
       <details class="faq-item">
         <summary>Что входит в диагностику ходовой?</summary>
-        <div class="faq-body"><span class="faq-cat">Ходовая</span><p>Мы осматриваем и проверяем амортизаторы, пружины, сайлентблоки, шаровые опоры, рулевые наконечники, стойки и втулки стабилизатора, ступичные подшипники, ШРУСы и состояние тормозных элементов. По итогам вы получаете честный список того, что требует замены сейчас, а что можно отложить.</p></div>
+        <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Ходовая</span><p>Мы осматриваем и проверяем амортизаторы, пружины, сайлентблоки, шаровые опоры, рулевые наконечники, стойки и втулки стабилизатора, ступичные подшипники, ШРУСы и состояние тормозных элементов. По итогам вы получаете честный список того, что требует замены сейчас, а что можно отложить.</p></div></div>
       </details>
       <details class="faq-item">
         <summary>Как часто обслуживать подвеску?</summary>
-        <div class="faq-body"><span class="faq-cat">Подвеска</span><p>Проверять подвеску рекомендуется раз в 15 000–20 000 км или при появлении посторонних звуков. Расходные элементы (сайлентблоки, стойки стабилизатора) меняются по износу. Регулярный осмотр продлевает срок службы шин и сохраняет управляемость.</p></div>
+        <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Подвеска</span><p>Проверять подвеску рекомендуется раз в 15 000–20 000 км или при появлении посторонних звуков. Расходные элементы (сайлентблоки, стойки стабилизатора) меняются по износу. Регулярный осмотр продлевает срок службы шин и сохраняет управляемость.</p></div></div>
       </details>
       <details class="faq-item">
         <summary>Сколько времени занимает ремонт?</summary>
-        <div class="faq-body"><span class="faq-cat">Общее</span><p>Замена масла и фильтров — около 30–60 минут. Диагностика — 30–40 минут. Ремонт подвески и тормозов чаще занимает от 1 до 3 часов, ремонт двигателя и сложные случаи — дольше. Точные сроки называем после диагностики, до начала работ.</p></div>
+        <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Общее</span><p>Замена масла и фильтров — около 30–60 минут. Диагностика — 30–40 минут. Ремонт подвески и тормозов чаще занимает от 1 до 3 часов, ремонт двигателя и сложные случаи — дольше. Точные сроки называем после диагностики, до начала работ.</p></div></div>
       </details>
       <details class="faq-item">
         <summary>Можно ли приехать без записи?</summary>
-        <div class="faq-body"><span class="faq-cat">Общее</span><p>Да, мы стараемся принять без записи, но в часы загрузки возможно ожидание. Чтобы приехать в удобное время и без очереди, лучше записаться заранее по телефону или через форму на сайте.</p></div>
+        <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Общее</span><p>Да, мы стараемся принять без записи, но в часы загрузки возможно ожидание. Чтобы приехать в удобное время и без очереди, лучше записаться заранее по телефону или через форму на сайте.</p></div></div>
       </details>
       <details class="faq-item">
         <summary>Есть ли гарантия на работы?</summary>
-        <div class="faq-body"><span class="faq-cat">Общее</span><p>Да. Мы предоставляем гарантию на выполненные работы и установленные запчасти. Срок и условия гарантии зависят от вида работ и согласовываются при оформлении заказа-наряда.</p></div>
+        <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Общее</span><p>Да. Мы предоставляем гарантию на выполненные работы и установленные запчасти. Срок и условия гарантии зависят от вида работ и согласовываются при оформлении заказа-наряда.</p></div></div>
       </details>
     </div>
   </div>
@@ -461,7 +498,7 @@
   <div class="container">
     <p class="eyebrow">Контакты</p>
     <h2 id="contacts-title" class="section-title">Как нас <span class="accent">найти</span></h2>
-    <div class="contacts-grid reveal">
+    <div class="contacts-grid stagger">
       <div class="contacts-info">
         <dl>
           <div><dt>Телефон</dt><dd><a href="tel:+79150919888">+7 915 091-98-88</a></dd></div>
@@ -495,6 +532,7 @@
     </div>
     <nav class="footer-nav" aria-label="Подвал">
       <a href="#services">Услуги</a>
+      <a href="#process">Как это работает</a>
       <a href="#promo">Акции</a>
       <a href="#brands">Марки авто</a>
       <a href="#faq">Вопросы</a>
@@ -512,7 +550,10 @@
   </div>
 </footer>
 
-<a href="#booking" class="floating-cta" aria-label="Записаться на ремонт">Записаться</a>
+<div class="mobile-actions" aria-label="Быстрые действия">
+  <a href="tel:+79150919888" class="mobile-actions-btn mobile-actions-call">Позвонить</a>
+  <a href="#booking" class="mobile-actions-btn mobile-actions-book">Записаться</a>
+</div>
 
 <!-- COOKIE CONSENT -->
 <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Уведомление об использовании файлов cookie" hidden>
@@ -527,7 +568,7 @@
   </div>
 </div>
 
-<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<noscript><style>.stagger>*,.hero-enter{opacity:1!important;transform:none!important;animation:none!important}</style></noscript>
 <script src="reveal.js" defer></script>
 <script src="script.js" defer></script>
 </body>

@@ -6,7 +6,7 @@
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  /* --- Scroll reveal: handled by reveal.js (two-way fade in/out), see index.html --- */
+  /* --- Scroll reveal: handled by reveal.js (once, staggered), see index.html --- */
 
   /* --- Mobile menu --- */
   var burger = document.querySelector('.burger');
@@ -25,112 +25,78 @@
     });
   }
 
-  /* --- Star helper --- */
-  function stars(n) {
-    n = Math.max(1, Math.min(5, parseInt(n, 10) || 5));
-    var on = '★'.repeat(n);
-    var off = '★'.repeat(5 - n);
-    return '<span aria-hidden="true">' + on + '<span class="off">' + off + '</span></span>' +
-           '<span class="sr-only"> ' + n + ' из 5</span>';
-  }
-
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
-
-  /* --- Seed reviews: realistic, varied ratings (not all 5.0) --- */
-  var seedReviews = [
-    { name: 'Алексей М.', rating: 5, date: '12.05.2026', text: 'Стучало в передней подвеске — сделали диагностику, показали что именно менять. Поменяли стойки стабилизатора и сайлентблоки, стук ушёл. Цену назвали заранее, по итогу столько и вышло.' },
-    { name: 'Ирина', rating: 5, date: '28.04.2026', text: 'Меняла масло и фильтры, всё быстро, минут за сорок. Понравилось, что подсказали по интервалу замены под мою машину. Вернусь на ТО.' },
-    { name: 'Дмитрий К.', rating: 4, date: '19.04.2026', text: 'Ремонт ходовой сделали хорошо, претензий нет. Немного дольше ждал, чем рассчитывал, был большой поток. В целом доволен, цена адекватная.' },
-    { name: 'Сергей', rating: 5, date: '03.04.2026', text: 'Приехал на бесплатную диагностику ходовой — отнеслись честно, сказали что критичного ничего нет, можно ездить. Не навязали лишнего. Это подкупает.' },
-    { name: 'Наталья В.', rating: 4, date: '21.03.2026', text: 'Делали тормоза, заменили колодки и диски. Машина тормозит как надо. Связь по телефону держали, сообщали о ходе работ.' },
-    { name: 'Павел', rating: 5, date: '08.03.2026', text: 'Компьютерная диагностика плюс замена масла. Нашли причину ошибки, объяснили нормальным языком без лишних терминов. Спасибо мастерам.' }
-  ];
-
-  var STORAGE_KEY = 'avtoservis_pending_reviews_v1';
-
-  function loadPending() {
-    try {
-      var raw = sessionStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch (e) { return []; }
-  }
-  function savePending(list) {
-    try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch (e) {}
-  }
-
-  function reviewCard(r, pending) {
-    var cls = 'review-card' + (pending ? ' review-pending' : '');
-    var badge = pending ? '<span class="review-badge">На модерации</span>' : '<span class="review-date">' + escapeHtml(r.date) + '</span>';
-    return '<article class="' + cls + '">' +
-      '<div class="review-top">' +
-        '<span class="review-name">' + escapeHtml(r.name) + '</span>' +
-        '<span class="review-stars">' + stars(r.rating) + '</span>' +
-      '</div>' +
-      '<p class="review-text">' + escapeHtml(r.text) + '</p>' +
-      badge +
-    '</article>';
-  }
-
-  function renderReviews() {
-    var list = document.getElementById('reviews-list');
-    if (!list) return;
-    var pending = loadPending();
-    var html = '';
-    // Show user's own pending reviews first (visible only to them, marked as awaiting moderation)
-    pending.forEach(function (r) { html += reviewCard(r, true); });
-    seedReviews.forEach(function (r) { html += reviewCard(r, false); });
-    list.innerHTML = html;
-  }
-  renderReviews();
-
-  /* --- Review form (moderation queue) --- */
-  var reviewForm = document.getElementById('review-form');
-  if (reviewForm) {
-    reviewForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var status = document.getElementById('review-status');
-      var data = new FormData(reviewForm);
-      var name = (data.get('name') || '').toString().trim();
-      var rating = data.get('rating');
-      var text = (data.get('text') || '').toString().trim();
-      var consent = data.get('consent');
-
-      if (!name || !rating || !text) {
-        status.textContent = 'Заполните имя, оценку и текст отзыва.';
-        status.className = 'form-status err';
-        return;
+  /* --- Header state on scroll --- */
+  (function () {
+    var header = document.querySelector('.site-header');
+    if (!header) return;
+    var ticking = false;
+    function update() {
+      header.classList.toggle('is-scrolled', window.scrollY > 12);
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
       }
-      if (!consent) {
-        status.textContent = 'Отметьте согласие на обработку персональных данных.';
-        status.className = 'form-status err';
-        return;
-      }
+    }, { passive: true });
+    update();
+  })();
 
-      var review = {
-        name: name,
-        rating: parseInt(rating, 10),
-        text: text,
-        date: new Date().toLocaleDateString('ru-RU'),
-        submittedAt: new Date().toISOString()
-      };
+  /* --- Scrollspy: highlight current section in nav --- */
+  (function () {
+    var sections = document.querySelectorAll('main section[id]');
+    var navLinks = document.querySelectorAll('.nav a[href^="#"]');
+    if (!sections.length || !navLinks.length || !('IntersectionObserver' in window)) return;
 
-      /* In production: POST to backend moderation endpoint, e.g.
-         fetch('/api/reviews', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(review)})
-         The review is then stored "unpublished" until an admin approves it. */
-      var pending = loadPending();
-      pending.unshift(review);
-      savePending(pending);
-      renderReviews();
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var id = entry.target.getAttribute('id');
+        navLinks.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
 
-      reviewForm.reset();
-      status.textContent = 'Спасибо! Отзыв отправлен и появится на сайте после проверки модератором.';
-      status.className = 'form-status ok';
+    sections.forEach(function (s) { spy.observe(s); });
+  })();
+
+  /* --- FAQ: smooth expand/collapse --- */
+  (function () {
+    var items = document.querySelectorAll('.faq-item');
+    items.forEach(function (details) {
+      var summary = details.querySelector('summary');
+      var body = details.querySelector('.faq-body');
+      if (!summary || !body) return;
+
+      summary.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if (details.hasAttribute('open')) {
+          body.style.height = body.scrollHeight + 'px';
+          requestAnimationFrame(function () {
+            body.style.height = '0px';
+          });
+          body.addEventListener('transitionend', function onEnd() {
+            details.removeAttribute('open');
+            body.style.height = '';
+            body.removeEventListener('transitionend', onEnd);
+          });
+        } else {
+          details.setAttribute('open', '');
+          body.style.height = '0px';
+          requestAnimationFrame(function () {
+            body.style.height = body.scrollHeight + 'px';
+          });
+          body.addEventListener('transitionend', function onEnd() {
+            body.style.height = '';
+            body.removeEventListener('transitionend', onEnd);
+          });
+        }
+      });
     });
-  }
+  })();
 
   /* --- Cookie consent --- */
   (function () {
