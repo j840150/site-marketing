@@ -7,29 +7,57 @@
   if (y) y.textContent = new Date().getFullYear();
 
   /* --- Release hero-enter animation classes once finished, so the parallax
-     below (which sets transform via inline style) is free to take over --- */
+     below (which sets transform via inline style) is free to take over on
+     .hero-figure, and the hero entrance never replays later --- */
   document.querySelectorAll('.hero-enter').forEach(function (el) {
     el.addEventListener('animationend', function () {
-      el.classList.remove('hero-enter', 'hero-enter-figure');
+      el.classList.remove('hero-enter', 'hero-enter-2', 'hero-enter-3', 'hero-enter-4');
     });
   });
 
   /* --- Scroll reveal: handled by reveal.js (once, staggered), see index.html --- */
 
+  /* --- Service card "Записаться": preselect service in booking form, scroll, focus --- */
+  document.querySelectorAll('.service-cta[data-service]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var select = document.getElementById('booking-service');
+      var value = btn.getAttribute('data-service');
+      if (select) {
+        var hasOption = Array.prototype.some.call(select.options, function (opt) {
+          return opt.value === value;
+        });
+        if (hasOption) select.value = value;
+      }
+      var target = document.getElementById('booking');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var nameInput = document.querySelector('#booking-form input[name="name"]');
+      if (nameInput) {
+        window.setTimeout(function () { nameInput.focus(); }, 500);
+      }
+    });
+  });
+
   /* --- Mobile menu --- */
   var burger = document.querySelector('.burger');
   var mobileNav = document.getElementById('mobile-nav');
   if (burger && mobileNav) {
+    function closeMobileNav(returnFocus) {
+      burger.setAttribute('aria-expanded', 'false');
+      mobileNav.hidden = true;
+      if (returnFocus) burger.focus();
+    }
     burger.addEventListener('click', function () {
       var open = burger.getAttribute('aria-expanded') === 'true';
       burger.setAttribute('aria-expanded', String(!open));
       mobileNav.hidden = open;
     });
     mobileNav.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        burger.setAttribute('aria-expanded', 'false');
-        mobileNav.hidden = true;
-      });
+      a.addEventListener('click', function () { closeMobileNav(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') {
+        closeMobileNav(true);
+      }
     });
   }
 
@@ -171,38 +199,73 @@
   /* --- Booking form --- */
   var bookingForm = document.getElementById('booking-form');
   if (bookingForm) {
+    var submitBtn = document.getElementById('booking-submit');
+    var submitBtnDefaultText = submitBtn ? submitBtn.textContent : '';
+    var isSubmitting = false;
+
+    function setFieldError(fieldEl, errorEl, message) {
+      if (errorEl) errorEl.textContent = message || '';
+      if (fieldEl) {
+        if (message) fieldEl.setAttribute('aria-invalid', 'true');
+        else fieldEl.removeAttribute('aria-invalid');
+      }
+    }
+
+    function clearAllErrors() {
+      ['name', 'phone', 'service', 'consent'].forEach(function (key) {
+        setFieldError(document.getElementById('field-' + key) || document.getElementById('booking-service'), document.getElementById('error-' + key), '');
+      });
+    }
+
     bookingForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (isSubmitting) return;
+
       var status = document.getElementById('booking-status');
+      var nameField = document.getElementById('field-name');
+      var phoneField = document.getElementById('field-phone');
+      var serviceField = document.getElementById('booking-service');
+      var consentField = document.getElementById('field-consent');
+
       var data = new FormData(bookingForm);
       var name = (data.get('name') || '').toString().trim();
       var phone = (data.get('phone') || '').toString().replace(/\D/g, '');
       var service = data.get('service');
       var consent = data.get('consent');
-
-      if (!name) {
-        status.textContent = 'Укажите ваше имя.';
-        status.className = 'form-status err';
-        return;
-      }
-      if (phone.length < 11) {
-        status.textContent = 'Введите корректный номер телефона.';
-        status.className = 'form-status err';
-        return;
-      }
-      if (!service) {
-        status.textContent = 'Выберите услугу.';
-        status.className = 'form-status err';
-        return;
-      }
-      if (!consent) {
-        status.textContent = 'Отметьте согласие на обработку персональных данных.';
-        status.className = 'form-status err';
-        return;
-      }
-
       var comment = (data.get('comment') || '').toString().trim();
 
+      clearAllErrors();
+      status.textContent = '';
+      status.className = 'form-status';
+
+      var firstInvalid = null;
+      if (!name) {
+        setFieldError(nameField, document.getElementById('error-name'), 'Укажите ваше имя.');
+        firstInvalid = firstInvalid || nameField;
+      }
+      if (phone.length < 11) {
+        setFieldError(phoneField, document.getElementById('error-phone'), 'Введите корректный номер телефона.');
+        firstInvalid = firstInvalid || phoneField;
+      }
+      if (!service) {
+        setFieldError(serviceField, document.getElementById('error-service'), 'Выберите услугу.');
+        firstInvalid = firstInvalid || serviceField;
+      }
+      if (!consent) {
+        setFieldError(consentField, document.getElementById('error-consent'), 'Отметьте согласие на обработку персональных данных.');
+        firstInvalid = firstInvalid || consentField;
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      isSubmitting = true;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем…';
+      }
       status.textContent = 'Отправляем заявку…';
       status.className = 'form-status';
 
@@ -235,6 +298,13 @@
           console.error('Web3Forms error:', err);
           status.textContent = 'Не удалось отправить заявку. Позвоните нам напрямую: +7 915 091-98-88.';
           status.className = 'form-status err';
+        })
+        .finally(function () {
+          isSubmitting = false;
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitBtnDefaultText;
+          }
         });
     });
   }
