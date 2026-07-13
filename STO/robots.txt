@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+Disallow: /privacy.html
+
+# AI / LLM crawlers explicitly allowed for citation in AI search
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: YandexBot
+Allow: /
+User-agent: Anthropic-AI
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://xn----7sbbcfcax2a6axe1amebi.xn--p1ai/sitemap.xml
+Host: https://xn----7sbbcfcax2a6axe1amebi.xn--p1ai
