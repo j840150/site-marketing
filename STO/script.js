@@ -6,6 +6,14 @@
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
+  /* --- Release hero-enter animation classes once finished, so the parallax
+     below (which sets transform via inline style) is free to take over --- */
+  document.querySelectorAll('.hero-enter').forEach(function (el) {
+    el.addEventListener('animationend', function () {
+      el.classList.remove('hero-enter', 'hero-enter-figure');
+    });
+  });
+
   /* --- Scroll reveal: handled by reveal.js (once, staggered), see index.html --- */
 
   /* --- Mobile menu --- */
@@ -25,13 +33,31 @@
     });
   }
 
-  /* --- Header state on scroll --- */
+  /* --- Header state, scroll progress bar, hero parallax (one shared rAF loop) --- */
   (function () {
     var header = document.querySelector('.site-header');
-    if (!header) return;
+    var progress = document.getElementById('scroll-progress');
+    var heroFigure = document.querySelector('.hero-figure');
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!header && !progress && !heroFigure) return;
+
     var ticking = false;
     function update() {
-      header.classList.toggle('is-scrolled', window.scrollY > 12);
+      var scrollY = window.scrollY;
+
+      if (header) header.classList.toggle('is-scrolled', scrollY > 12);
+
+      if (progress) {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        progress.style.width = (max > 0 ? Math.min(100, (scrollY / max) * 100) : 0) + '%';
+      }
+
+      if (heroFigure && !prefersReduced) {
+        var offset = Math.min(scrollY * 0.12, 40);
+        heroFigure.style.transform = 'translateY(' + offset + 'px)';
+      }
+
       ticking = false;
     }
     window.addEventListener('scroll', function () {
