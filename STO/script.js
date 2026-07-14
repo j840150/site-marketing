@@ -168,6 +168,32 @@
     });
   })();
 
+  /* --- Cursor-spotlight on cards: sets --spot-x/--spot-y (percent) on the
+     hovered card only, read by its own ::before/::after radial-gradient in
+     CSS. Delegated per-grid so this stays cheap even with many cards, and
+     the variable is written directly to the hovered leaf element (never a
+     shared parent) so it never triggers a style recalc on its siblings. --- */
+  (function () {
+    var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHover) return;
+
+    function attachSpotlight(containerSelector, cardSelector) {
+      document.querySelectorAll(containerSelector).forEach(function (container) {
+        container.addEventListener('mousemove', function (e) {
+          var card = e.target.closest(cardSelector);
+          if (!card) return;
+          var rect = card.getBoundingClientRect();
+          card.style.setProperty('--spot-x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+          card.style.setProperty('--spot-y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+        });
+      });
+    }
+
+    attachSpotlight('.why-grid', '.why-card');
+    attachSpotlight('.services-grid', '.service-card');
+    attachSpotlight('.promo-grid', '.promo-card');
+  })();
+
   /* --- Scrollspy: highlight current section in nav --- */
   (function () {
     var sections = document.querySelectorAll('main section[id]');

@@ -22,7 +22,7 @@
   var canUseMotion = !prefersReduced && !!(M && typeof M.inView === 'function' && typeof M.animate === 'function');
 
   var staggerGroups = document.querySelectorAll('.stagger');
-  var singles = document.querySelectorAll('.eyebrow, [data-reveal]:not([data-reveal-repeat])');
+  var singles = document.querySelectorAll('.eyebrow, .section-title, [data-reveal]:not([data-reveal-repeat])');
   var repeatItems = document.querySelectorAll('[data-reveal-repeat]');
 
   function showAll(list) {
