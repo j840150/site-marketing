@@ -111,6 +111,31 @@
     update();
   })();
 
+  /* --- Hero photo: subtle spring-based 3D tilt on mouse move (decorative,
+     desktop-only). Applied to the <img>, not .hero-figure itself, so it never
+     fights with the scroll parallax above (which owns .hero-figure's own
+     transform via a plain inline style, outside Motion's tracked values). --- */
+  (function () {
+    var M = window.Motion;
+    var figure = document.querySelector('.hero-figure');
+    var img = figure ? figure.querySelector('img') : null;
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!figure || !img || !M || typeof M.animate !== 'function' || prefersReduced || !canHover) return;
+
+    var SPRING = { type: 'spring', stiffness: 150, damping: 18 };
+
+    figure.addEventListener('mousemove', function (e) {
+      var rect = figure.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width - 0.5;
+      var py = (e.clientY - rect.top) / rect.height - 0.5;
+      M.animate(img, { rotateY: px * 7, rotateX: py * -7 }, SPRING);
+    });
+    figure.addEventListener('mouseleave', function () {
+      M.animate(img, { rotateY: 0, rotateX: 0 }, SPRING);
+    });
+  })();
+
   /* --- Scrollspy: highlight current section in nav --- */
   (function () {
     var sections = document.querySelectorAll('main section[id]');
