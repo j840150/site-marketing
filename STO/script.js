@@ -6,6 +6,12 @@
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
+  /* --- Guard against mobile browsers restoring a scrolled bfcache snapshot
+     (bounce back from another page) so the site never "opens" mid-scroll --- */
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted && !location.hash) window.scrollTo(0, 0);
+  });
+
   /* --- Release hero-enter animation classes once finished, so the parallax
      below (which sets transform via inline style) is free to take over on
      .hero-figure, and the hero entrance never replays later --- */
