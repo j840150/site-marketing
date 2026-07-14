@@ -321,29 +321,29 @@
   <div class="container">
     <p class="eyebrow">Как мы работаем</p>
     <h2 id="process-title" class="section-title">Как проходит <span class="accent">ремонт</span></h2>
-    <ol class="process-grid stagger">
+    <ol class="process-timeline stagger">
       <li class="process-step">
-        <span class="process-num">01</span>
+        <span class="process-node"><span class="process-num">01</span></span>
         <h3>Запись</h3>
         <p>Оставляете заявку на сайте или звоните — коротко описываете проблему или нужную услугу.</p>
       </li>
       <li class="process-step">
-        <span class="process-num">02</span>
+        <span class="process-node"><span class="process-num">02</span></span>
         <h3>Диагностика</h3>
         <p>Проверяем автомобиль и определяем точную причину неисправности.</p>
       </li>
       <li class="process-step">
-        <span class="process-num">03</span>
+        <span class="process-node"><span class="process-num">03</span></span>
         <h3>Объяснение неисправности</h3>
         <p>Рассказываем, что именно не так и почему, понятным языком.</p>
       </li>
       <li class="process-step">
-        <span class="process-num">04</span>
+        <span class="process-node"><span class="process-num">04</span></span>
         <h3>Согласование работ</h3>
         <p>Что нужно сделать сейчас, а что можно отложить — решение за вами, до начала ремонта.</p>
       </li>
       <li class="process-step">
-        <span class="process-num">05</span>
+        <span class="process-node"><span class="process-num">05</span></span>
         <h3>Ремонт и выдача автомобиля</h3>
         <p>Выполняем согласованные работы и показываем результат при выдаче.</p>
       </li>
@@ -400,7 +400,7 @@
     <h2 id="brands-title" class="section-title">Марки, которые мы <span class="accent">обслуживаем</span></h2>
     <p class="brands-lead">Работаем с большинством массовых марок, представленных на дорогах Тамбова — от японских и корейских моделей до отечественных и китайских. Не нашли свою марку в списке — уточните по телефону, скорее всего, тоже возьмёмся.</p>
     <div class="brands-divider" role="presentation"></div>
-    <ul class="brands-grid stagger">
+    <ul class="brands-grid stagger" id="brands-list">
       <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">T</span><img src="https://cdn.simpleicons.org/toyota/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/toyota.com'"></span><span class="brand-label">Toyota</span></li>
       <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">K</span><img src="https://cdn.simpleicons.org/kia/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/kia.com'"></span><span class="brand-label">Kia</span></li>
       <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">H</span><img src="https://cdn.simpleicons.org/hyundai/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/hyundai.com'"></span><span class="brand-label">Hyundai</span></li>
@@ -416,76 +416,85 @@
       <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">M</span><img src="https://cdn.simpleicons.org/mitsubishi/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/mitsubishi-motors.com'"></span><span class="brand-label">Mitsubishi</span></li>
       <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">H</span><img src="https://cdn.simpleicons.org/honda/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/honda.com'"></span><span class="brand-label">Honda</span></li>
       <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">L</span><img src="https://cdn.simpleicons.org/lexus/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/lexus.com'"></span><span class="brand-label">Lexus</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">V</span><img src="https://cdn.simpleicons.org/volvo/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/volvocars.com'"></span><span class="brand-label">Volvo</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">C</span><img src="https://cdn.simpleicons.org/chevrolet/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/chevrolet.com'"></span><span class="brand-label">Chevrolet</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">P</span><img src="https://cdn.simpleicons.org/peugeot/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/peugeot.com'"></span><span class="brand-label">Peugeot</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">O</span><img src="https://cdn.simpleicons.org/opel/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/opel.com'"></span><span class="brand-label">Opel</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">S</span><img src="https://cdn.simpleicons.org/subaru/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/subaru.com'"></span><span class="brand-label">Subaru</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">S</span><img src="https://cdn.simpleicons.org/suzuki/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/globalsuzuki.com'"></span><span class="brand-label">Suzuki</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">I</span><img src="https://cdn.simpleicons.org/infiniti/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/infiniti.com'"></span><span class="brand-label">Infiniti</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">J</span><img src="https://cdn.simpleicons.org/jeep/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/jeep.com'"></span><span class="brand-label">Jeep</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">D</span><img src="https://logo.clearbit.com/datsun.com" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Datsun</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">У</span><img src="https://logo.clearbit.com/uaz.ru" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">УАЗ</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">G</span><img src="https://cdn.simpleicons.org/geely/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/geely.com'"></span><span class="brand-label">Geely</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">C</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Chery_logo.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Chery</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">H</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Haval_2023_logo.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Haval</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">C</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Changan_icon.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Changan</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">E</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Exeed_logo.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Exeed</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">O</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Omoda_wordmark.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Omoda</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">J</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/New_Jac_motors_logo.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">JAC</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">T</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tank_%28Great_Wall_Motor_brand%29_logo%2C_global_market.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Tank</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">J</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Jetour_logomark.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Jetour</span></li>
-      <li><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">E</span><img src="https://cdn.simpleicons.org/evolute/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.onerror=function(){this.remove()};this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Evolute_logo.svg'};this.src='https://logo.clearbit.com/evolute-auto.ru'"></span><span class="brand-label">Evolute</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">V</span><img src="https://cdn.simpleicons.org/volvo/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/volvocars.com'"></span><span class="brand-label">Volvo</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">C</span><img src="https://cdn.simpleicons.org/chevrolet/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/chevrolet.com'"></span><span class="brand-label">Chevrolet</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">P</span><img src="https://cdn.simpleicons.org/peugeot/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/peugeot.com'"></span><span class="brand-label">Peugeot</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">O</span><img src="https://cdn.simpleicons.org/opel/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/opel.com'"></span><span class="brand-label">Opel</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">S</span><img src="https://cdn.simpleicons.org/subaru/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/subaru.com'"></span><span class="brand-label">Subaru</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">S</span><img src="https://cdn.simpleicons.org/suzuki/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/globalsuzuki.com'"></span><span class="brand-label">Suzuki</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">I</span><img src="https://cdn.simpleicons.org/infiniti/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/infiniti.com'"></span><span class="brand-label">Infiniti</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">J</span><img src="https://cdn.simpleicons.org/jeep/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/jeep.com'"></span><span class="brand-label">Jeep</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">D</span><img src="https://logo.clearbit.com/datsun.com" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Datsun</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">У</span><img src="https://logo.clearbit.com/uaz.ru" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">УАЗ</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">G</span><img src="https://cdn.simpleicons.org/geely/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.remove()};this.src='https://logo.clearbit.com/geely.com'"></span><span class="brand-label">Geely</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">C</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Chery_logo.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Chery</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">H</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Haval_2023_logo.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Haval</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">C</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Changan_icon.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Changan</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">E</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Exeed_logo.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Exeed</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">O</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Omoda_wordmark.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Omoda</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">J</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/New_Jac_motors_logo.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">JAC</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">T</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tank_%28Great_Wall_Motor_brand%29_logo%2C_global_market.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Tank</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">J</span><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Jetour_logomark.svg" alt="" loading="lazy" onerror="this.remove()"></span><span class="brand-label">Jetour</span></li>
+      <li class="brand-extra"><span class="brand-mark"><span class="brand-mark-fallback" aria-hidden="true">E</span><img src="https://cdn.simpleicons.org/evolute/000000" alt="" loading="lazy" onerror="this.onerror=function(){this.onerror=function(){this.remove()};this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Evolute_logo.svg'};this.src='https://logo.clearbit.com/evolute-auto.ru'"></span><span class="brand-label">Evolute</span></li>
     </ul>
+    <div class="brands-toggle-wrap">
+      <button type="button" class="btn btn-outline" id="brands-toggle" aria-expanded="false" aria-controls="brands-list">Показать все марки</button>
+    </div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="section faq" id="faq" aria-labelledby="faq-title">
-  <div class="container faq-container">
-    <p class="eyebrow">Вопрос–ответ</p>
-    <h2 id="faq-title" class="section-title">Частые вопросы <span class="accent">об авто</span></h2>
+  <div class="container">
+    <div class="faq-layout">
+      <div class="faq-intro" data-reveal="left" data-reveal-repeat>
+        <p class="eyebrow">Вопрос–ответ</p>
+        <h2 id="faq-title" class="section-title">Частые вопросы <span class="accent">об авто</span></h2>
+        <p class="faq-intro-text">Собрали, что чаще всего спрашивают перед записью. Не нашли ответ — позвоните, расскажем подробнее по вашей машине.</p>
+        <a href="tel:+79150919888" class="btn btn-outline">Позвонить</a>
+      </div>
     <div class="faq-list stagger">
-      <details class="faq-item" open>
+      <details class="faq-item" name="faq-group" open>
         <summary>Когда нужно менять масло в двигателе?</summary>
         <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Двигатель</span><p>В среднем моторное масло меняют каждые 8 000–10 000 км или раз в год. При частых поездках по городу, коротких маршрутах и зимних запусках интервал лучше сокращать. Точный интервал зависит от марки и модели автомобиля, рекомендаций производителя и стиля езды — мы подбираем его индивидуально и сразу проверяем уровень и состояние масла.</p></div></div>
       </details>
-      <details class="faq-item">
+      <details class="faq-item" name="faq-group">
         <summary>Какие признаки говорят о проблемах с двигателем?</summary>
         <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Двигатель</span><p>Насторожить должны: загоревшийся «чек», падение мощности и провалы при разгоне, троение и вибрация на холостых, посторонние стуки, синий или чёрный дым из выхлопа, повышенный расход масла или топлива, перегрев. При любом из этих симптомов лучше сразу сделать компьютерную диагностику двигателя — мы считаем ошибки и найдём причину до того, как поломка станет дорогой.</p></div></div>
       </details>
-      <details class="faq-item">
+      <details class="faq-item" name="faq-group">
         <summary>Что входит в диагностику двигателя?</summary>
         <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Двигатель</span><p>Компьютерная диагностика двигателя включает считывание кодов ошибок из блока управления, проверку показаний датчиков в реальном времени, оценку работы системы зажигания, топливоподачи и впуска. При необходимости проверяем компрессию в цилиндрах и состояние свечей. По итогам вы получаете понятное объяснение неисправности и расчёт стоимости ремонта.</p></div></div>
       </details>
-      <details class="faq-item">
+      <details class="faq-item" name="faq-group">
         <summary>Когда двигателю нужен ремонт, а не просто обслуживание?</summary>
         <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Двигатель</span><p>Плановое обслуживание (масло, фильтры, свечи) поддерживает двигатель в норме. Ремонт требуется, когда есть конкретная неисправность: стук, потеря компрессии, течь масла или антифриза, перегрев, ошибки по катушкам или форсункам. Точный объём работ мы определяем по результатам диагностики и всегда согласовываем с вами до начала ремонта.</p></div></div>
       </details>
-      <details class="faq-item">
+      <details class="faq-item" name="faq-group">
         <summary>Как понять, что проблема в ходовой части?</summary>
         <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Ходовая</span><p>Основные признаки: стуки и скрипы на неровностях, увод автомобиля в сторону, неравномерный износ шин, вибрация на руле, раскачка кузова после ям. При любом из этих симптомов стоит сделать диагностику ходовой. В Тамбове первая диагностика ходовой у нас — бесплатно.</p></div></div>
       </details>
-      <details class="faq-item">
+      <details class="faq-item" name="faq-group">
         <summary>Что входит в диагностику ходовой?</summary>
         <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Ходовая</span><p>Мы осматриваем и проверяем амортизаторы, пружины, сайлентблоки, шаровые опоры, рулевые наконечники, стойки и втулки стабилизатора, ступичные подшипники, ШРУСы и состояние тормозных элементов. По итогам вы получаете список того, что требует замены сейчас, а что можно отложить.</p></div></div>
       </details>
-      <details class="faq-item">
+      <details class="faq-item" name="faq-group">
         <summary>Как часто обслуживать подвеску?</summary>
         <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Подвеска</span><p>Проверять подвеску рекомендуется раз в 15 000–20 000 км или при появлении посторонних звуков — точный интервал зависит от модели автомобиля, рекомендаций производителя и состояния узлов. Расходные элементы (сайлентблоки, стойки стабилизатора) меняются по износу. Регулярный осмотр продлевает срок службы шин и сохраняет управляемость.</p></div></div>
       </details>
-      <details class="faq-item">
+      <details class="faq-item" name="faq-group">
         <summary>Сколько времени занимает ремонт?</summary>
         <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Общее</span><p>Замена масла и фильтров — около 30–60 минут. Диагностика — 30–40 минут. Ремонт подвески и тормозов чаще занимает от 1 до 3 часов, ремонт двигателя и сложные случаи — дольше. Сроки зависят от автомобиля, объёма работ и наличия нужных деталей — точное время называем после диагностики, до начала работ.</p></div></div>
       </details>
-      <details class="faq-item">
+      <details class="faq-item" name="faq-group">
         <summary>Можно ли приехать без записи?</summary>
         <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Общее</span><p>Да, мы стараемся принять без записи, но в часы загрузки возможно ожидание. Чтобы приехать в удобное время и без очереди, лучше записаться заранее по телефону или через форму на сайте.</p></div></div>
       </details>
-      <details class="faq-item">
+      <details class="faq-item" name="faq-group">
         <summary>Есть ли гарантия на работы?</summary>
         <div class="faq-body"><div class="faq-body-inner"><span class="faq-cat">Общее</span><p>Да. Мы предоставляем гарантию на выполненные работы и установленные запчасти. Срок и условия гарантии зависят от вида работ и согласовываются при оформлении заказа-наряда.</p></div></div>
       </details>
+    </div>
     </div>
   </div>
 </section>

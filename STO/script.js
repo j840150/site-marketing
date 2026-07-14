@@ -17,6 +17,20 @@
 
   /* --- Scroll reveal: handled by reveal.js (once, staggered), see index.html --- */
 
+  /* --- Brands: show all / collapse --- */
+  var brandsToggle = document.getElementById('brands-toggle');
+  var brandsGrid = document.getElementById('brands-list');
+  if (brandsToggle && brandsGrid) {
+    brandsToggle.addEventListener('click', function () {
+      var expanded = brandsGrid.classList.toggle('expanded');
+      brandsToggle.setAttribute('aria-expanded', String(expanded));
+      brandsToggle.textContent = expanded ? 'Свернуть список марок' : 'Показать все марки';
+      if (!expanded) {
+        brandsGrid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  }
+
   /* --- Service card "Записаться": preselect service in booking form, scroll, focus --- */
   document.querySelectorAll('.service-cta[data-service]').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -116,37 +130,55 @@
     sections.forEach(function (s) { spy.observe(s); });
   })();
 
-  /* --- FAQ: smooth expand/collapse --- */
+  /* --- FAQ: smooth expand/collapse, only one item open at a time --- */
   (function () {
-    var items = document.querySelectorAll('.faq-item');
+    var items = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
+    if (!items.length) return;
+
+    function closeItem(details) {
+      var body = details.querySelector('.faq-body');
+      if (!body || !details.hasAttribute('open')) return;
+      body.style.height = body.scrollHeight + 'px';
+      requestAnimationFrame(function () {
+        body.style.height = '0px';
+      });
+      body.addEventListener('transitionend', function onEnd() {
+        details.removeAttribute('open');
+        body.style.height = '';
+        body.removeEventListener('transitionend', onEnd);
+      });
+    }
+
+    function openItem(details) {
+      var body = details.querySelector('.faq-body');
+      if (!body) return;
+      details.setAttribute('open', '');
+      body.style.height = '0px';
+      requestAnimationFrame(function () {
+        body.style.height = body.scrollHeight + 'px';
+      });
+      body.addEventListener('transitionend', function onEnd() {
+        body.style.height = '';
+        body.removeEventListener('transitionend', onEnd);
+      });
+    }
+
     items.forEach(function (details) {
       var summary = details.querySelector('summary');
-      var body = details.querySelector('.faq-body');
-      if (!summary || !body) return;
+      if (!summary) return;
 
       summary.addEventListener('click', function (e) {
         e.preventDefault();
+        var wasOpen = details.hasAttribute('open');
 
-        if (details.hasAttribute('open')) {
-          body.style.height = body.scrollHeight + 'px';
-          requestAnimationFrame(function () {
-            body.style.height = '0px';
-          });
-          body.addEventListener('transitionend', function onEnd() {
-            details.removeAttribute('open');
-            body.style.height = '';
-            body.removeEventListener('transitionend', onEnd);
-          });
+        items.forEach(function (other) {
+          if (other !== details && other.hasAttribute('open')) closeItem(other);
+        });
+
+        if (wasOpen) {
+          closeItem(details);
         } else {
-          details.setAttribute('open', '');
-          body.style.height = '0px';
-          requestAnimationFrame(function () {
-            body.style.height = body.scrollHeight + 'px';
-          });
-          body.addEventListener('transitionend', function onEnd() {
-            body.style.height = '';
-            body.removeEventListener('transitionend', onEnd);
-          });
+          openItem(details);
         }
       });
     });
