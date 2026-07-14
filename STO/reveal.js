@@ -11,19 +11,21 @@
    Если Motion недоступна (сеть/CDN подвела) — используется CSS-фолбэк:
    классы .in просто переключают уже готовые CSS-transition в styles.css.
 
-   Два режима:
-   - one-shot: .stagger (сетки карточек), .eyebrow, [data-reveal] без
-     data-reveal-repeat — анимация один раз, элемент больше не отслеживается.
-   - repeat: [data-reveal-repeat] — крупные секционные блоки, анимация
-     повторяется при входе/выходе из viewport в обе стороны прокрутки. */
+   Все реавилы — one-shot: сработал один раз при входе в viewport, элемент
+   остаётся видимым навсегда (включая [data-reveal-repeat] — раньше эти
+   крупные блоки гасли при выходе из viewport и появлялись заново при
+   возврате, но на мобильном инерционный скролл заставлял элемент несколько
+   раз подряд пересекать границу срабатывания за один свайп — это читалось
+   как мерцание, а не как премиальный эффект. Атрибут data-reveal-repeat
+   оставлен в разметке, но реально трактуется так же, как обычный
+   data-reveal — один раз показался и остался). */
 (function () {
   var M = window.Motion;
   var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canUseMotion = !prefersReduced && !!(M && typeof M.inView === 'function' && typeof M.animate === 'function');
 
   var staggerGroups = document.querySelectorAll('.stagger');
-  var singles = document.querySelectorAll('.eyebrow, .section-title, [data-reveal]:not([data-reveal-repeat])');
-  var repeatItems = document.querySelectorAll('[data-reveal-repeat]');
+  var singles = document.querySelectorAll('.eyebrow, .section-title, [data-reveal], [data-reveal-repeat]');
 
   function showAll(list) {
     list.forEach(function (el) { el.classList.add('in'); });
@@ -32,11 +34,9 @@
   if (prefersReduced || !('IntersectionObserver' in window)) {
     showAll(staggerGroups);
     showAll(singles);
-    showAll(repeatItems);
     return;
   }
 
-  var SPRING = { type: 'spring', duration: 0.7, bounce: 0.16 };
   var SPRING_FAST = { type: 'spring', duration: 0.5, bounce: 0.14 };
 
   if (canUseMotion) {
@@ -58,21 +58,10 @@
     singles.forEach(function (el) {
       M.inView(el, function () {
         el.classList.add('in');
-        if (el.hasAttribute('data-reveal')) {
+        if (el.hasAttribute('data-reveal') || el.hasAttribute('data-reveal-repeat')) {
           M.animate(el, { opacity: 1, x: 0, y: 0, scale: 1 }, SPRING_FAST);
         }
       }, { margin: '0px 0px -8% 0px', amount: 0.15 });
-    });
-
-    repeatItems.forEach(function (el) {
-      M.inView(el, function () {
-        el.classList.add('in');
-        M.animate(el, { opacity: 1, x: 0, y: 0, scale: 1 }, SPRING);
-        return function () {
-          el.classList.remove('in');
-          M.animate(el, { opacity: 0 }, { duration: 0.25 });
-        };
-      }, { margin: '-5% 0px -12% 0px', amount: 0.15 });
     });
     return;
   }
@@ -89,15 +78,4 @@
   }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
   staggerGroups.forEach(function (el) { onceObserver.observe(el); });
   singles.forEach(function (el) { onceObserver.observe(el); });
-
-  var repeatObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-      } else if (entry.boundingClientRect.top > 0) {
-        entry.target.classList.remove('in');
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '-5% 0px -12% 0px' });
-  repeatItems.forEach(function (el) { repeatObserver.observe(el); });
 })();
