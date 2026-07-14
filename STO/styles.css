@@ -374,6 +374,7 @@ html.js .process-timeline.in::after{width:80%}
   background:linear-gradient(155deg,var(--paper) 0%,#fff 65%);
   transition:border-color 220ms var(--ease-out),transform 220ms var(--ease-out),background 220ms var(--ease-out);
 }
+.brands-grid .brand-mark img{width:76%;height:76%;object-fit:contain}
 .brand-code{font-family:'Oswald',sans-serif;font-weight:700;font-size:.98rem;letter-spacing:.01em;color:var(--ink);transition:color 220ms var(--ease-out)}
 .brand-label{font-family:'Oswald',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);transition:color 220ms var(--ease-out)}
 .brands-toggle-wrap{text-align:center;margin-top:36px}
