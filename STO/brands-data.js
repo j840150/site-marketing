@@ -45,6 +45,7 @@ window.CAR_BRANDS = [
   { code: 'CN', name: 'Changan', logo: 'assets/car-brands/changan.png', alt: 'Логотип Changan' },
   { code: 'EX', name: 'Exeed', logo: 'assets/car-brands/exeed.png', alt: 'Логотип Exeed' },
   { code: 'OM', name: 'Omoda', logo: 'assets/car-brands/omoda.svg', alt: 'Логотип Omoda' },
+  { code: 'JCO', name: 'Jaecoo', logo: 'assets/car-brands/jaecoo.svg', alt: 'Логотип Jaecoo' },
   { code: 'JAC', name: 'JAC', logo: 'assets/car-brands/jac.png', alt: 'Логотип JAC' },
   { code: 'TA', name: 'Tank', logo: null, alt: 'Tank' },
   { code: 'JT', name: 'Jetour', logo: 'assets/car-brands/jetour.png', alt: 'Логотип Jetour' },
