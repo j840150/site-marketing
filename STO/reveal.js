@@ -1,35 +1,47 @@
 /* Автосервис Тамбов — появление блоков при прокрутке.
-   Работает с классами .reveal / .reveal.in, которые уже есть в styles.css.
-   Ничего не меняет в script.js — подключается отдельным <script> тегом. */
-(function () {
-  var items = document.querySelectorAll('.reveal');
-  if (!items.length) return;
+   html.js уже проставлен инлайн-скриптом в <head>, до отрисовки страницы.
+   Без JS всё остаётся видимым (см. html.js-правила в styles.css).
 
-  // Если у пользователя отключена анимация в системе — просто показываем всё сразу
+   Только opacity, без transform: содержимое ничего не сдвигает и не
+   масштабирует, просто проявляется на своём законном месте в layout.
+   Раз это предопределённый one-shot переход (не жест, не прерываемое
+   перетаскивание), CSS-transition — то, что нужно: он идёт вне главного
+   потока и не проседает, даже если в это время догружается контент.
+   Motion (пружины) оставлен только для декоративного наклона фото в hero
+   (см. script.js) — там это единственный оправданный случай для JS-анимации.
+
+   Один режим: one-shot. Сработал один раз при входе в viewport — элемент
+   остаётся видимым навсегда (включая [data-reveal-repeat]: раньше эти
+   крупные блоки гасли при выходе из viewport и появлялись заново при
+   возврате, но на мобильном инерционный скролл заставлял элемент несколько
+   раз подряд пересекать границу срабатывания за один свайп — это читалось
+   как мерцание. Атрибут data-reveal-repeat оставлен в разметке для
+   совместимости, но трактуется как обычный data-reveal). */
+(function () {
   var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var staggerGroups = document.querySelectorAll('.stagger');
+  var singles = document.querySelectorAll('.eyebrow, .section-title, [data-reveal], [data-reveal-repeat]');
+
+  function showAll(list) {
+    list.forEach(function (el) { el.classList.add('in'); });
+  }
+
   if (prefersReduced || !('IntersectionObserver' in window)) {
-    items.forEach(function (el) { el.classList.add('in'); });
+    showAll(staggerGroups);
+    showAll(singles);
     return;
   }
 
-  var observer = new IntersectionObserver(function (entries) {
+  var onceObserver = new IntersectionObserver(function (entries, obs) {
     entries.forEach(function (entry) {
-      // появляется, когда блок входит в область видимости,
-      // и снова скрывается, если полностью уйдёт из неё —
-      // так анимация повторяется и при прокрутке вниз, и вверх
       if (entry.isIntersecting) {
         entry.target.classList.add('in');
-      } else if (entry.boundingClientRect.top > 0) {
-        // сбрасываем только когда блок ушёл ВНИЗ за пределы экрана
-        // (не когда прокрутили дальше него вверх по странице) —
-        // так при обратной прокрутке он снова красиво появится
-        entry.target.classList.remove('in');
+        obs.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -8% 0px'
-  });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
 
-  items.forEach(function (el) { observer.observe(el); });
+  staggerGroups.forEach(function (el) { onceObserver.observe(el); });
+  singles.forEach(function (el) { onceObserver.observe(el); });
 })();

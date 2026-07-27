@@ -6,131 +6,266 @@
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  /* --- Scroll reveal: handled by reveal.js (two-way fade in/out), see index.html --- */
+  /* --- Guard against mobile browsers restoring a scrolled bfcache snapshot
+     (bounce back from another page) so the site never "opens" mid-scroll --- */
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted && !location.hash) window.scrollTo(0, 0);
+  });
 
-  /* --- Mobile menu --- */
+  /* --- Release hero-enter animation classes once finished, so the parallax
+     below (which sets transform via inline style) is free to take over on
+     .hero-figure, and the hero entrance never replays later --- */
+  document.querySelectorAll('.hero-enter').forEach(function (el) {
+    el.addEventListener('animationend', function () {
+      el.classList.remove('hero-enter', 'hero-enter-2', 'hero-enter-3', 'hero-enter-4');
+    });
+  });
+
+  /* --- Scroll reveal: handled by reveal.js (once, staggered), see index.html --- */
+
+  /* --- Brands: show all / collapse --- */
+  var brandsToggle = document.getElementById('brands-toggle');
+  var brandsGrid = document.getElementById('brands-list');
+  if (brandsToggle && brandsGrid) {
+    brandsToggle.addEventListener('click', function () {
+      var expanded = brandsGrid.classList.toggle('expanded');
+      brandsToggle.setAttribute('aria-expanded', String(expanded));
+      brandsToggle.textContent = expanded ? 'Свернуть список марок' : 'Показать все марки';
+      if (!expanded) {
+        brandsGrid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  }
+
+  /* --- Service card "Записаться": preselect service in booking form, scroll, focus --- */
+  document.querySelectorAll('.service-cta[data-service]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var select = document.getElementById('booking-service');
+      var value = btn.getAttribute('data-service');
+      if (select) {
+        var hasOption = Array.prototype.some.call(select.options, function (opt) {
+          return opt.value === value;
+        });
+        if (hasOption) select.value = value;
+      }
+      var target = document.getElementById('booking');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var nameInput = document.querySelector('#booking-form input[name="name"]');
+      if (nameInput) {
+        window.setTimeout(function () { nameInput.focus(); }, 500);
+      }
+    });
+  });
+
+  /* --- Mobile menu: animated height/opacity open-close (same
+     interruptible-transition technique as the FAQ accordion below) --- */
   var burger = document.querySelector('.burger');
   var mobileNav = document.getElementById('mobile-nav');
   if (burger && mobileNav) {
+    var navOpen = false;
+
+    function openMobileNav() {
+      navOpen = true;
+      burger.setAttribute('aria-expanded', 'true');
+      mobileNav.hidden = false;
+      mobileNav.style.height = '0px';
+      requestAnimationFrame(function () {
+        mobileNav.classList.add('is-open');
+        mobileNav.style.height = mobileNav.scrollHeight + 'px';
+      });
+      mobileNav.addEventListener('transitionend', function onEnd(e) {
+        if (e.propertyName !== 'height' || !navOpen) return;
+        mobileNav.style.height = 'auto';
+        mobileNav.removeEventListener('transitionend', onEnd);
+      });
+    }
+
+    function closeMobileNav(returnFocus) {
+      navOpen = false;
+      burger.setAttribute('aria-expanded', 'false');
+      mobileNav.classList.remove('is-open');
+      mobileNav.style.height = mobileNav.scrollHeight + 'px';
+      requestAnimationFrame(function () {
+        mobileNav.style.height = '0px';
+      });
+      mobileNav.addEventListener('transitionend', function onEnd(e) {
+        if (e.propertyName !== 'height' || navOpen) return;
+        mobileNav.hidden = true;
+        mobileNav.removeEventListener('transitionend', onEnd);
+      });
+      if (returnFocus) burger.focus();
+    }
+
     burger.addEventListener('click', function () {
-      var open = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', String(!open));
-      mobileNav.hidden = open;
+      if (navOpen) closeMobileNav(false); else openMobileNav();
     });
     mobileNav.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        burger.setAttribute('aria-expanded', 'false');
-        mobileNav.hidden = true;
+      a.addEventListener('click', function () { closeMobileNav(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navOpen) closeMobileNav(true);
+    });
+  }
+
+  /* --- Header state, scroll progress bar, hero parallax (one shared rAF loop) --- */
+  (function () {
+    var header = document.querySelector('.site-header');
+    var progress = document.getElementById('scroll-progress');
+    var heroFigure = document.querySelector('.hero-figure');
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!header && !progress && !heroFigure) return;
+
+    var ticking = false;
+    function update() {
+      var scrollY = window.scrollY;
+
+      if (header) header.classList.toggle('is-scrolled', scrollY > 12);
+
+      if (progress) {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        progress.style.width = (max > 0 ? Math.min(100, (scrollY / max) * 100) : 0) + '%';
+      }
+
+      if (heroFigure && !prefersReduced) {
+        var offset = Math.min(scrollY * 0.12, 40);
+        heroFigure.style.transform = 'translateY(' + offset + 'px)';
+      }
+
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+    update();
+  })();
+
+  /* --- Hero photo: subtle spring-based 3D tilt on mouse move (decorative,
+     desktop-only). Applied to the <img>, not .hero-figure itself, so it never
+     fights with the scroll parallax above (which owns .hero-figure's own
+     transform via a plain inline style, outside Motion's tracked values). --- */
+  (function () {
+    var M = window.Motion;
+    var figure = document.querySelector('.hero-figure');
+    var img = figure ? figure.querySelector('img') : null;
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!figure || !img || !M || typeof M.animate !== 'function' || prefersReduced || !canHover) return;
+
+    var SPRING = { type: 'spring', stiffness: 150, damping: 18 };
+
+    figure.addEventListener('mousemove', function (e) {
+      var rect = figure.getBoundingClientRect();
+      var px = (e.clientX - rect.left) / rect.width - 0.5;
+      var py = (e.clientY - rect.top) / rect.height - 0.5;
+      M.animate(img, { rotateY: px * 7, rotateX: py * -7 }, SPRING);
+    });
+    figure.addEventListener('mouseleave', function () {
+      M.animate(img, { rotateY: 0, rotateX: 0 }, SPRING);
+    });
+  })();
+
+  /* --- Cursor-spotlight on cards: sets --spot-x/--spot-y (percent) on the
+     hovered card only, read by its own ::before/::after radial-gradient in
+     CSS. Delegated per-grid so this stays cheap even with many cards, and
+     the variable is written directly to the hovered leaf element (never a
+     shared parent) so it never triggers a style recalc on its siblings. --- */
+  (function () {
+    var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHover) return;
+
+    function attachSpotlight(containerSelector, cardSelector) {
+      document.querySelectorAll(containerSelector).forEach(function (container) {
+        container.addEventListener('mousemove', function (e) {
+          var card = e.target.closest(cardSelector);
+          if (!card) return;
+          var rect = card.getBoundingClientRect();
+          card.style.setProperty('--spot-x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+          card.style.setProperty('--spot-y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+        });
+      });
+    }
+
+    attachSpotlight('.why-grid', '.why-card');
+    attachSpotlight('.services-grid', '.service-card');
+    attachSpotlight('.promo-grid', '.promo-card');
+  })();
+
+  /* --- Scrollspy: highlight current section in nav --- */
+  (function () {
+    var sections = document.querySelectorAll('main section[id]');
+    var navLinks = document.querySelectorAll('.nav a[href^="#"]');
+    if (!sections.length || !navLinks.length || !('IntersectionObserver' in window)) return;
+
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var id = entry.target.getAttribute('id');
+        navLinks.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+    sections.forEach(function (s) { spy.observe(s); });
+  })();
+
+  /* --- FAQ: smooth expand/collapse, only one item open at a time --- */
+  (function () {
+    var items = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
+    if (!items.length) return;
+
+    function closeItem(details) {
+      var body = details.querySelector('.faq-body');
+      if (!body || !details.hasAttribute('open')) return;
+      body.style.height = body.scrollHeight + 'px';
+      requestAnimationFrame(function () {
+        body.style.height = '0px';
+      });
+      body.addEventListener('transitionend', function onEnd() {
+        details.removeAttribute('open');
+        body.style.height = '';
+        body.removeEventListener('transitionend', onEnd);
+      });
+    }
+
+    function openItem(details) {
+      var body = details.querySelector('.faq-body');
+      if (!body) return;
+      details.setAttribute('open', '');
+      body.style.height = '0px';
+      requestAnimationFrame(function () {
+        body.style.height = body.scrollHeight + 'px';
+      });
+      body.addEventListener('transitionend', function onEnd() {
+        body.style.height = '';
+        body.removeEventListener('transitionend', onEnd);
+      });
+    }
+
+    items.forEach(function (details) {
+      var summary = details.querySelector('summary');
+      if (!summary) return;
+
+      summary.addEventListener('click', function (e) {
+        e.preventDefault();
+        var wasOpen = details.hasAttribute('open');
+
+        items.forEach(function (other) {
+          if (other !== details && other.hasAttribute('open')) closeItem(other);
+        });
+
+        if (wasOpen) {
+          closeItem(details);
+        } else {
+          openItem(details);
+        }
       });
     });
-  }
-
-  /* --- Star helper --- */
-  function stars(n) {
-    n = Math.max(1, Math.min(5, parseInt(n, 10) || 5));
-    var on = '★'.repeat(n);
-    var off = '★'.repeat(5 - n);
-    return '<span aria-hidden="true">' + on + '<span class="off">' + off + '</span></span>' +
-           '<span class="sr-only"> ' + n + ' из 5</span>';
-  }
-
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
-  }
-
-  /* --- Seed reviews: realistic, varied ratings (not all 5.0) --- */
-  var seedReviews = [
-    { name: 'Алексей М.', rating: 5, date: '12.05.2026', text: 'Стучало в передней подвеске — сделали диагностику, показали что именно менять. Поменяли стойки стабилизатора и сайлентблоки, стук ушёл. Цену назвали заранее, по итогу столько и вышло.' },
-    { name: 'Ирина', rating: 5, date: '28.04.2026', text: 'Меняла масло и фильтры, всё быстро, минут за сорок. Понравилось, что подсказали по интервалу замены под мою машину. Вернусь на ТО.' },
-    { name: 'Дмитрий К.', rating: 4, date: '19.04.2026', text: 'Ремонт ходовой сделали хорошо, претензий нет. Немного дольше ждал, чем рассчитывал, был большой поток. В целом доволен, цена адекватная.' },
-    { name: 'Сергей', rating: 5, date: '03.04.2026', text: 'Приехал на бесплатную диагностику ходовой — отнеслись честно, сказали что критичного ничего нет, можно ездить. Не навязали лишнего. Это подкупает.' },
-    { name: 'Наталья В.', rating: 4, date: '21.03.2026', text: 'Делали тормоза, заменили колодки и диски. Машина тормозит как надо. Связь по телефону держали, сообщали о ходе работ.' },
-    { name: 'Павел', rating: 5, date: '08.03.2026', text: 'Компьютерная диагностика плюс замена масла. Нашли причину ошибки, объяснили нормальным языком без лишних терминов. Спасибо мастерам.' }
-  ];
-
-  var STORAGE_KEY = 'avtoservis_pending_reviews_v1';
-
-  function loadPending() {
-    try {
-      var raw = sessionStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch (e) { return []; }
-  }
-  function savePending(list) {
-    try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch (e) {}
-  }
-
-  function reviewCard(r, pending) {
-    var cls = 'review-card' + (pending ? ' review-pending' : '');
-    var badge = pending ? '<span class="review-badge">На модерации</span>' : '<span class="review-date">' + escapeHtml(r.date) + '</span>';
-    return '<article class="' + cls + '">' +
-      '<div class="review-top">' +
-        '<span class="review-name">' + escapeHtml(r.name) + '</span>' +
-        '<span class="review-stars">' + stars(r.rating) + '</span>' +
-      '</div>' +
-      '<p class="review-text">' + escapeHtml(r.text) + '</p>' +
-      badge +
-    '</article>';
-  }
-
-  function renderReviews() {
-    var list = document.getElementById('reviews-list');
-    if (!list) return;
-    var pending = loadPending();
-    var html = '';
-    // Show user's own pending reviews first (visible only to them, marked as awaiting moderation)
-    pending.forEach(function (r) { html += reviewCard(r, true); });
-    seedReviews.forEach(function (r) { html += reviewCard(r, false); });
-    list.innerHTML = html;
-  }
-  renderReviews();
-
-  /* --- Review form (moderation queue) --- */
-  var reviewForm = document.getElementById('review-form');
-  if (reviewForm) {
-    reviewForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var status = document.getElementById('review-status');
-      var data = new FormData(reviewForm);
-      var name = (data.get('name') || '').toString().trim();
-      var rating = data.get('rating');
-      var text = (data.get('text') || '').toString().trim();
-      var consent = data.get('consent');
-
-      if (!name || !rating || !text) {
-        status.textContent = 'Заполните имя, оценку и текст отзыва.';
-        status.className = 'form-status err';
-        return;
-      }
-      if (!consent) {
-        status.textContent = 'Отметьте согласие на обработку персональных данных.';
-        status.className = 'form-status err';
-        return;
-      }
-
-      var review = {
-        name: name,
-        rating: parseInt(rating, 10),
-        text: text,
-        date: new Date().toLocaleDateString('ru-RU'),
-        submittedAt: new Date().toISOString()
-      };
-
-      /* In production: POST to backend moderation endpoint, e.g.
-         fetch('/api/reviews', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(review)})
-         The review is then stored "unpublished" until an admin approves it. */
-      var pending = loadPending();
-      pending.unshift(review);
-      savePending(pending);
-      renderReviews();
-
-      reviewForm.reset();
-      status.textContent = 'Спасибо! Отзыв отправлен и появится на сайте после проверки модератором.';
-      status.className = 'form-status ok';
-    });
-  }
+  })();
 
   /* --- Cookie consent --- */
   (function () {
@@ -144,11 +279,17 @@
     function show() {
       banner.hidden = false;
       document.body.classList.add('cookie-visible');
+      requestAnimationFrame(function () { banner.classList.add('is-visible'); });
     }
     function hide(value) {
       try { localStorage.setItem(KEY, value); } catch (e) {}
-      banner.hidden = true;
+      banner.classList.remove('is-visible');
       document.body.classList.remove('cookie-visible');
+      banner.addEventListener('transitionend', function onEnd(e) {
+        if (e.propertyName !== 'transform') return;
+        banner.hidden = true;
+        banner.removeEventListener('transitionend', onEnd);
+      });
     }
 
     if (!saved) show();
@@ -179,38 +320,73 @@
   /* --- Booking form --- */
   var bookingForm = document.getElementById('booking-form');
   if (bookingForm) {
+    var submitBtn = document.getElementById('booking-submit');
+    var submitBtnDefaultText = submitBtn ? submitBtn.textContent : '';
+    var isSubmitting = false;
+
+    function setFieldError(fieldEl, errorEl, message) {
+      if (errorEl) errorEl.textContent = message || '';
+      if (fieldEl) {
+        if (message) fieldEl.setAttribute('aria-invalid', 'true');
+        else fieldEl.removeAttribute('aria-invalid');
+      }
+    }
+
+    function clearAllErrors() {
+      ['name', 'phone', 'service', 'consent'].forEach(function (key) {
+        setFieldError(document.getElementById('field-' + key) || document.getElementById('booking-service'), document.getElementById('error-' + key), '');
+      });
+    }
+
     bookingForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (isSubmitting) return;
+
       var status = document.getElementById('booking-status');
+      var nameField = document.getElementById('field-name');
+      var phoneField = document.getElementById('field-phone');
+      var serviceField = document.getElementById('booking-service');
+      var consentField = document.getElementById('field-consent');
+
       var data = new FormData(bookingForm);
       var name = (data.get('name') || '').toString().trim();
       var phone = (data.get('phone') || '').toString().replace(/\D/g, '');
       var service = data.get('service');
       var consent = data.get('consent');
-
-      if (!name) {
-        status.textContent = 'Укажите ваше имя.';
-        status.className = 'form-status err';
-        return;
-      }
-      if (phone.length < 11) {
-        status.textContent = 'Введите корректный номер телефона.';
-        status.className = 'form-status err';
-        return;
-      }
-      if (!service) {
-        status.textContent = 'Выберите услугу.';
-        status.className = 'form-status err';
-        return;
-      }
-      if (!consent) {
-        status.textContent = 'Отметьте согласие на обработку персональных данных.';
-        status.className = 'form-status err';
-        return;
-      }
-
       var comment = (data.get('comment') || '').toString().trim();
 
+      clearAllErrors();
+      status.textContent = '';
+      status.className = 'form-status';
+
+      var firstInvalid = null;
+      if (!name) {
+        setFieldError(nameField, document.getElementById('error-name'), 'Укажите ваше имя.');
+        firstInvalid = firstInvalid || nameField;
+      }
+      if (phone.length < 11) {
+        setFieldError(phoneField, document.getElementById('error-phone'), 'Введите корректный номер телефона.');
+        firstInvalid = firstInvalid || phoneField;
+      }
+      if (!service) {
+        setFieldError(serviceField, document.getElementById('error-service'), 'Выберите услугу.');
+        firstInvalid = firstInvalid || serviceField;
+      }
+      if (!consent) {
+        setFieldError(consentField, document.getElementById('error-consent'), 'Отметьте согласие на обработку персональных данных.');
+        firstInvalid = firstInvalid || consentField;
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      isSubmitting = true;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправляем…';
+      }
       status.textContent = 'Отправляем заявку…';
       status.className = 'form-status';
 
@@ -243,6 +419,13 @@
           console.error('Web3Forms error:', err);
           status.textContent = 'Не удалось отправить заявку. Позвоните нам напрямую: +7 915 091-98-88.';
           status.className = 'form-status err';
+        })
+        .finally(function () {
+          isSubmitting = false;
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitBtnDefaultText;
+          }
         });
     });
   }
