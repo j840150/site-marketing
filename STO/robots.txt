@@ -2,22 +2,60 @@ User-agent: *
 Allow: /
 Disallow: /privacy.html
 
-# AI / LLM crawlers explicitly allowed for citation in AI search
+# ===== AI / LLM crawlers — explicitly allowed for citation in AI search and assistants =====
+
+# OpenAI (ChatGPT, web browsing / search grounding)
 User-agent: GPTBot
 Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 User-agent: ChatGPT-User
 Allow: /
-User-agent: PerplexityBot
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
 Allow: /
-User-agent: Google-Extended
-Allow: /
-User-agent: YandexBot
+User-agent: Claude-Web
 Allow: /
 User-agent: Anthropic-AI
 Allow: /
-User-agent: ClaudeBot
+
+# Google (Gemini / Google AI Overviews) + standard Googlebot
+User-agent: Google-Extended
+Allow: /
+User-agent: Googlebot
+Allow: /
+User-agent: Googlebot-Image
+Allow: /
+
+# Microsoft / Bing (Bing index feeds Copilot and, via partnership, ChatGPT search)
+User-agent: Bingbot
+Allow: /
+User-agent: BingPreview
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Yandex (search, YandexGPT / Алиса / Нейро)
+User-agent: Yandex
+Allow: /
+User-agent: YandexBot
+Allow: /
+User-agent: YandexDirect
+Allow: /
+User-agent: YandexAccessibilityBot
+Allow: /
+User-agent: YandexMobileBot
+Allow: /
+
+# Sber (GigaChat) — no dedicated public crawler name is officially documented
+# at the time of writing; these are included defensively in case Sber ships
+# a named bot, but access is already covered by the default "User-agent: *" above.
+User-agent: GigaBot
+Allow: /
+User-agent: SberBot
 Allow: /
 
 Sitemap: https://xn--80aacebauz3avdzlebh.xn--p1ai/sitemap.xml
